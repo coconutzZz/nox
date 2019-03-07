@@ -1,0 +1,60 @@
+$theme-colors: (
+  "primary": #21566b
+);
+$border-radius:               .25rem !default;
+$border-radius-lg:            .50rem !default;
+$border-radius-sm:            .2rem !default;
+// Then include the following
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-vue/src/index.scss';
+
+@font-face {
+  font-family: Heavitas;
+  src: url(../assets/fonts/heavitas.woff) format('woff');
+}
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+.container-fluid {
+  padding: 0 !important;
+  margin: 0;
+}
+h1 {
+  font-family: Heavitas, 'Arial Black', Helvetica, sans-serif;
+  color: #424242;
+  font-size: 55px;
+}
+h2 {
+  text-transform: uppercase;
+  font-family: Heavitas, 'Arial Black', Helvetica, sans-serif;
+}
+.bold {
+  font-weight: 700;
+}
+.fp-controlArrow {
+  &.fp-prev {
+    border-color: transparent #21566b transparent transparent;
+  }
+  &.fp-next {
+    border-color: transparent transparent transparent #21566b;
+  }
+}
+.btn {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  &:after {
+    content: ' \2192';
+    font-family: Arial, Helvetica, sans-serif;
+  }
+}
+.desc-big {
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+}
