@@ -1,15 +1,13 @@
 <template>
   <div>
     <MainMenu :active-slide="active" @show-cars="showCars = true" />
-    <div class="container-fluid">
-      <Logo :active-slide="active" />
-      <Contact :active-slide="active" />
-      <CarsModal v-if="showCars" @close="showCars = false" />
-      <div id="fullpage">
-        <Home @show-cars="showCars = true" />
-        <Services />
-        <About />
-      </div>
+    <Logo :active-slide="active" />
+    <Contact :active-slide="active" />
+    <CarsModal v-if="showCars" @close="showCars = false" />
+    <div id="fullpage">
+      <Home @show-cars="showCars = true" />
+      <Services />
+      <About />
     </div>
   </div>
 </template>
@@ -24,9 +22,10 @@ import About from '~/pages/About.vue'
 import Contact from '~/components/Contact.vue'
 import CarsModal from '~/pages/Cars-Modal.vue'
 import Vue from 'vue'
-import { Layout } from 'bootstrap-vue/es/components'
+import VueMq from 'vue-mq'
 
-Vue.use(Layout)
+Vue.use(VueMq)
+
 export default {
   components: {
     Logo,
@@ -62,6 +61,7 @@ export default {
       loopHorizontal: false,
       menu: '#main-menu',
       anchors: ['top', 'storitve', 'kontakt'],
+      responsiveSlides: true,
       onLeave: (origin, destination, direction) => {
         this.onLeave(origin, destination, direction)
       }

@@ -5,7 +5,7 @@
     <span />
     <span />
     <ul id="menu">
-      <a v-for="item in items" :key="item.link" :href="item.link">
+      <a v-for="item in items" :key="item.link" :href="item.link" @click="onClick(item.id)">
         <li>{{ item.text }}</li>
       </a>
     </ul>
@@ -16,6 +16,13 @@
 export default {
   props: {
     items: Array
+  },
+  methods: {
+    onClick(id) {
+      if (id === 1) {
+        this.$emit('show-cars')
+      }
+    }
   }
 }
 </script>
@@ -24,8 +31,8 @@ export default {
 #menuToggle {
   display: block;
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 10px;
+  right: 10px;
   z-index: 1;
   -webkit-user-select: none;
   user-select: none;
@@ -43,14 +50,15 @@ export default {
     &:checked {
       ~ span {
         opacity: 1;
-        transform: rotate(45deg) translate(-12px, -18px);
-        background: #fff;
+        transform: rotate(45deg) translate(7px, -3px);
+        background-color: #21566b;
+        z-index: 1;
         &:nth-last-child(3) {
           opacity: 0;
           transform: rotate(0deg) scale(0.2, 0.2);
         }
         &:nth-last-child(2) {
-          transform: rotate(-45deg) translate(-2px, 8px);
+          transform: rotate(-45deg) translate(2px, 8px);
         }
       }
       ~ #menu {
@@ -80,7 +88,9 @@ export default {
 }
 #menu {
   position: absolute;
-  width: 300px;
+  width: 400px;
+  height: 110vh;
+  background-color: #fff;
   margin: -100px 0 0 0;
   padding: 50px;
   padding-top: 125px;
@@ -90,7 +100,7 @@ export default {
   transform-origin: 100% 0%;
   transform: translate(100%, 0);
   transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  z-index: 1;
+  z-index: 0;
   a {
     text-decoration: none;
     color: #21566b;

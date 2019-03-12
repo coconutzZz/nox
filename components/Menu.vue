@@ -41,7 +41,7 @@ export default {
       position: relative;
       color: #fff;
       &:after {
-        height: 2px;
+        height: 0px;
         background-color: #fff;
         display: block;
         position: absolute;
@@ -54,8 +54,10 @@ export default {
       &.active,
       &:hover {
         &:after {
+          height: 3px;
           width: 40px;
           transform: translate(-20px);
+          border-radius: 3px;
         }
       }
     }

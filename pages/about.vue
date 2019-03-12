@@ -1,37 +1,31 @@
 <template>
   <div id="contact" class="section">
-    <b-row>
-      <b-col md-6>
-        <b-row>
-          <b-col md-12 class="info">
-            <b-row>
-              <b-col>
-                <div class="about-info">
-                  <h1>Obiščite nas:</h1>
-                  <div />
-                </div>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col>
-                <div class="about-info">
-                  <h1>Kontakt:</h1>
-                  <div><span class="bold">E:</span> +386 31 650 725</div>
-                  <div><span class="bold">T:</span> nox@siol.net</div>
-                </div>
-              </b-col>
-            </b-row>
-          </b-col>
-        </b-row>
-      </b-col>
-      <b-col md-6 class="map">
+    <div class="column">
+      <div class="info-wrapper">
+        <div class="info">
+          <h1>Kje smo:</h1>
+          <div><span class="bold">NOX, </span>trgovina in storitve, d.o.o.</div>
+          <div><span class="bold">Markišavska ulica 15</span></div>
+          <div><span class="bold">9000 Murska Sobota</span></div>
+        </div>
+      </div>
+      <div class="info-wrapper blue">
+        <div class="info">
+          <h1>Kontakt:</h1>
+          <div><span class="bold">E:</span> +386 31 650 725</div>
+          <div><span class="bold">T:</span> nox@siol.net</div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="map">
         <GmapMap
           id="location"
           :center="{lat: 46.669661, lng: 16.172074}"
           :zoom="20"
         />
-      </b-col>
-    </b-row>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -41,35 +35,38 @@ export default {}
 
 <style lang="scss">
 #contact {
-  .info {
-    .row {
-      height: 50vh;
+  display: flex;
+  flex-direction: row;
+  .column {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    > div {
+      flex: 1;
       font-size: 20px;
-      h1 {
-        font-size: 45px;
-      }
-      &:last-child {
+    }
+    .info-wrapper {
+      &.blue {
         background-color: #21566b;
         color: #fff;
         h1 {
           color: #f6e095;
         }
       }
-      .about-info {
+      .info {
         width: 40%;
-        margin: 0 auto;
         position: relative;
         top: 50%;
         transform: translateY(-50%);
+        text-align: left;
+        margin: 0 auto;
       }
     }
-  }
-  .map {
-    height: 100vh;
-    padding: 0;
-    #location {
-      height: 100vh;
-      width: 100%;
+    .map {
+      #location {
+        height: 100vh;
+        width: 100%;
+      }
     }
   }
 }

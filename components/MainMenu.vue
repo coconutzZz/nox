@@ -1,7 +1,11 @@
 <template>
   <nav :class="['slide-' + this.activeSlide]" role="navigation">
-    <HamburgerMenu :items="items" class="d-lg-none" />
-    <Menu :items="items" class="d-none d-lg-block" @show-cars="showCars()" />
+    <mq-layout :mq="['xs','sm']">
+      <HamburgerMenu v-if="this.$mq == 'sm'" :items="items" @show-cars="showCars()" />
+    </mq-layout>
+    <mq-layout mq="md+">
+      <Menu :items="items" class="d-none d-lg-block" @show-cars="showCars()" />
+    </mq-layout>
   </nav>    
 </template>
 
@@ -22,8 +26,7 @@ export default {
       items: [
         {
           id: 1,
-          link: '#top',
-          anchor: 'top',
+          link: '#',
           text: 'Ponudba vozil'
         },
         { id: 2, link: '#storitve', anchor: 'storitve', text: 'Storitve' },

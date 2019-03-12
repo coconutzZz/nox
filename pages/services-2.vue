@@ -2,7 +2,7 @@
   <div id="services-second" data-anchor="services-2" class="slide">
     <b-row />
     <b-row>
-      <b-col col>
+      <b-col>
         <div class="desc-wrapper">
           <h1>Prodaja in odkup vozil</h1>
           <p>
@@ -27,6 +27,7 @@ export default {}
 <style lang="scss">
 #services-second {
   .row {
+    margin: 0;
     height: 50vh;
     &:first-child {
       background-image: url(../static/img/bg-bmws.jpg);

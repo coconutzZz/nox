@@ -24,7 +24,8 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [],
+  css: [
+  ],
 
   /*
   ** Plugins to load before mounting the App
@@ -35,14 +36,15 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt',
+    '@nuxtjs/style-resources',
     '@nuxtjs/pwa'
   ],
 
-  bootstrapVue: {
-    bootstrapCSS: false, // or `css`
-    bootstrapVueCSS: false // or `bvCSS`
+  styleResources: {
+    scss: [
+      './assets/_variables.scss',
+      './flexboxgrid-sass'
+    ]
   },
 
   transpile: [/^vue2-google-maps($|\/)/],

@@ -5,21 +5,16 @@
       <div class="desc-big">
         Najdete nas v Murski Soboti<br>na Markišavski ulici
       </div>
-      <b-button size="lg" variant="primary" @click="$emit('show-cars')">
+      <button size="lg" variant="primary" @click="$emit('show-cars')">
         PREVERITE PONUDBO
-      </b-button>
+      </button>
     </div>
     <div class="texture-bg" />
   </div>
 </template>
 
 <script>
-import BButton from 'bootstrap-vue/es/components/button/button'
-export default {
-  components: {
-    BButton
-  }
-}
+export default {}
 </script>
 
 <style lang="scss">

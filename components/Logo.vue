@@ -21,33 +21,18 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins/breakpoints';
+@import 'flexboxgrid-sass/flexboxgrid.scss';
+
 .nox-logo {
-  background-color: #21566b;
+  background-color: $primary;
   padding: 10px 20px;
   height: 100px;
   width: 260px;
   position: absolute;
-  z-index: 70;
+  z-index: 75;
   top: 20px;
   transition: all 0.5s ease;
 }
-@include media-breakpoint-up(lg) {
-  .nox-logo {
-    &.nox-logo-small {
-      top: 0px;
-      transform: scale(0.6);
-      transform-origin: left top;
-    }
-  }
-}
-@include media-breakpoint-down(md) {
-  .nox-logo {
-    top: 0px;
-    transform: scale(0.5);
-    transform-origin: left top;
-  }
+@media only screen and (min-width: 48em) {
 }
 </style>
