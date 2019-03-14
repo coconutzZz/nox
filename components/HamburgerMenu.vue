@@ -1,9 +1,9 @@
 <template>
   <div id="menuToggle">
-    <input type="checkbox">
-    <span />
-    <span />
-    <span />
+    <input type="checkbox" v-model="checked">
+    <md-button class="md-fab md-primary" @click="!checked">
+      <md-icon>menu</md-icon>
+    </md-button>
     <ul id="menu">
       <a v-for="item in items" :key="item.link" :href="item.link" @click="onClick(item.id)">
         <li>{{ item.text }}</li>
@@ -16,6 +16,11 @@
 export default {
   props: {
     items: Array
+  },
+  data() {
+    return {
+      checked: false
+    }
   },
   methods: {
     onClick(id) {

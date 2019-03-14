@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="text-center">
-      <b-spinner label="Spinning" class="m-2" v-if="isLoading" />
+      <b-spinner v-if="isLoading" label="Spinning" class="m-2" />
       <iframe 
         id="avto-net"
-        :class="{ 'loading': this.isLoading }"
         :key="key"
+        :class="{ 'loading': this.isLoading }"
         :src="url"
         width="100%"
         border="0"
@@ -34,6 +34,15 @@ export default {
         'http://www.avto.net/_DEALERPAGES/results.asp?broker=12125&izpis={view}&znamka={model}&oblika={type}'
     }
   },
+  computed: {
+    url() {
+      return this.urlBase.formatUnicorn({
+        view: 1,
+        model: this.selectedModel,
+        type: this.selectedType
+      })
+    }
+  },
   watch: {
     selectedModel() {
       this.key = this.generateKey()
@@ -51,15 +60,6 @@ export default {
     },
     isLoaded() {
       this.isLoading = false
-    }
-  },
-  computed: {
-    url() {
-      return this.urlBase.formatUnicorn({
-        view: 1,
-        model: this.selectedModel,
-        type: this.selectedType
-      })
     }
   }
 }

@@ -1,19 +1,19 @@
 <template>
   <div class="modal-wrapper">
     <div>
-      <Cars :selectedModel="selectedModel" :selectedType="selectedType" />
+      <Cars :selected-model="selectedModel" :selected-type="selectedType" />
     </div>
     <div>
       <div class="close-modal" @click="this.hide">
         <span />
         <span />
       </div>
-      <select class="form-control" v-model="selectedModel">
+      <select v-model="selectedModel" class="form-control">
         <option v-for="model in models" :key="model.id" :value="model.id">
           {{ model.title }}
         </option>
       </select>
-      <select class="form-control" v-model="selectedType">
+      <select v-model="selectedType" class="form-control">
         <option v-for="type in types" :key="type.id" :value="type.id">
           {{ type.name }}
         </option>

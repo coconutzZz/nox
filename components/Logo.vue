@@ -1,7 +1,7 @@
 <template>
-  <a href="#top" :class="logoClass">
+  <md-card md-with-hover class="primary">
     <img class="img-fluid" src="../static/img/nox-logo.png" title="Nox d.o.o. - Prodaja Vozil" alt="Nox d.o.o. - Prodaja Vozil">
-  </a>
+  </md-card>
 </template>
 
 <script>
@@ -22,16 +22,13 @@ export default {
 
 <style lang="scss">
 @import 'flexboxgrid-sass/flexboxgrid.scss';
-
-.nox-logo {
+.md-card {
+  width: auto;
+  margin: 4px;
+  padding: 10px;
+  vertical-align: top;
   background-color: $primary;
-  padding: 10px 20px;
-  height: 100px;
-  width: 260px;
-  position: absolute;
-  z-index: 75;
-  top: 20px;
-  transition: all 0.5s ease;
+  float: left;
 }
 @media only screen and (min-width: 48em) {
 }

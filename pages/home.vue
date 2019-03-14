@@ -5,9 +5,9 @@
       <div class="desc-big">
         Najdete nas v Murski Soboti<br>na Markišavski ulici
       </div>
-      <button size="lg" variant="primary" @click="$emit('show-cars')">
+      <md-button class="md-raised md-primary" @click="$emit('show-cars')">
         PREVERITE PONUDBO
-      </button>
+      </md-button>
     </div>
     <div class="texture-bg" />
   </div>

@@ -2,7 +2,7 @@
   <div>
     <MainMenu :active-slide="active" @show-cars="showCars = true" />
     <Logo :active-slide="active" />
-    <Contact :active-slide="active" />
+    <Contact :active-slide="active" />    
     <CarsModal v-if="showCars" @close="showCars = false" />
     <div id="fullpage">
       <Home @show-cars="showCars = true" />
@@ -23,8 +23,17 @@ import Contact from '~/components/Contact.vue'
 import CarsModal from '~/pages/Cars-Modal.vue'
 import Vue from 'vue'
 import VueMq from 'vue-mq'
-
+import {
+  MdButton,
+  MdCard,
+  MdSpeedDial,
+  MdIcon
+} from 'vue-material/dist/components'
 Vue.use(VueMq)
+Vue.use(MdButton)
+Vue.use(MdCard)
+Vue.use(MdSpeedDial)
+Vue.use(MdIcon)
 
 export default {
   components: {
