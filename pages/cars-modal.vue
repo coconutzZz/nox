@@ -1,23 +1,23 @@
 <template>
   <div class="modal-wrapper">
-    <div>
-      <Cars :selected-model="selectedModel" :selected-type="selectedType" />
-    </div>
-    <div>
-      <div class="close-modal" @click="this.hide">
-        <span />
-        <span />
+    <div class="md-layout">
+      <div class="md-layout-item md-xlarge-size-20 md-large-size-30 md-small-size-100 filter">
+        <md-field>
+          <label for="brand">Znamka</label>
+          <md-select v-model="selectedModel" name="brand" id="brand">
+            <md-option v-for="model in models" :key="model.id" :value="model.id">{{ model.title }}</md-option>
+          </md-select>
+        </md-field>
+        <md-field>
+          <label for="type">Karoserijska izvedba</label>
+          <md-select v-model="selectedType" name="type" id="type">
+            <md-option v-for="type in types" :key="type.id" :value="type.id">{{ type.name }}</md-option>
+          </md-select>
+        </md-field>
       </div>
-      <select v-model="selectedModel" class="form-control">
-        <option v-for="model in models" :key="model.id" :value="model.id">
-          {{ model.title }}
-        </option>
-      </select>
-      <select v-model="selectedType" class="form-control">
-        <option v-for="type in types" :key="type.id" :value="type.id">
-          {{ type.name }}
-        </option>
-      </select>
+      <div class="md-layout-item md-small-size-100">
+        <Cars :selected-model="selectedModel" :selected-type="selectedType" />
+      </div>
     </div>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
       selectedModel: '',
       selectedType: '',
       models: [
-        { id: '', title: 'Znamka' },
+        { id: '', title: 'Vse znamke' },
         { id: 502, title: 'Audi' },
         { id: 504, title: 'BMW' },
         { id: 509, title: 'Citroen' },
@@ -52,7 +52,7 @@ export default {
         { id: 585, title: 'Volkswagen' }
       ],
       types: [
-        { id: '', name: 'Karoserijska izvedba' },
+        { id: '', name: 'Vse' },
         { id: 11, name: 'limuzina' },
         { id: 12, name: 'kombilimuzina / hatchback' },
         { id: 13, name: 'karavan' },
@@ -74,42 +74,18 @@ export default {
 
 <style lang="scss">
 .modal-wrapper {
+  .md-layout {
+    width: 100%;
+    .filter {
+      padding: 50px 20px;
+    }
+  }
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 1000;
+  z-index: 9;
   background-color: #fff;
-  display: flex;
-  > div {
-    flex: 1;
-  }
-  .filter {
-    padding: 100px 50px 0px 30px;
-    select {
-      margin-top: 20px;
-    }
-  }
-}
-.close-modal {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  span {
-    display: block;
-    width: 40px;
-    height: 4px;
-    background-color: #21566b;
-    &:first-child {
-      transform: rotate(45deg);
-    }
-    &:last-child {
-      transform: rotate(-45deg) translate(2px, -3px);
-    }
-  }
 }
 </style>

@@ -1,21 +1,17 @@
 <template>
   <nav :class="['slide-' + this.activeSlide]" role="navigation">
-    <mq-layout :mq="['xs','sm']">
-      <HamburgerMenu v-if="this.$mq == 'sm'" :items="items" @show-cars="showCars()" />
-    </mq-layout>
-    <mq-layout mq="md+">
-      <Menu :items="items" class="d-none d-lg-block" @show-cars="showCars()" />
-    </mq-layout>
-  </nav>    
+    <NavigationDrawer :items="items" @show-cars="showCars()" />
+    <Menu v-if="false" :items="items" class="d-none d-lg-block" @show-cars="showCars()" />
+  </nav>
 </template>
 
 <script>
-import HamburgerMenu from './HamburgerMenu.vue'
+import NavigationDrawer from './NavigationDrawer.vue'
 import Menu from './Menu.vue'
 
 export default {
   components: {
-    HamburgerMenu,
+    NavigationDrawer,
     Menu
   },
   props: {

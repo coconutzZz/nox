@@ -36,7 +36,8 @@ html {
 h1 {
   font-family: Heavitas, 'Arial Black', Helvetica, sans-serif;
   color: #424242;
-  font-size: 55px;
+  font-size: 2.2rem;
+  line-height: 2rem;
 }
 h2 {
   text-transform: uppercase;
@@ -53,15 +54,21 @@ h2 {
     border-color: transparent transparent transparent #21566b;
   }
 }
-.btn {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  &:after {
-    content: ' \2192';
-    font-family: Arial, Helvetica, sans-serif;
+button {
+  &.forward {
+    .md-button-content {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1.2rem;
+      &:after {
+        content: ' \2192';
+        font-family: Arial, Helvetica, sans-serif;
+      }
+    }
   }
 }
-.desc-big {
-  font-size: 18px;
+.md-subheading {
   font-family: 'Open Sans', sans-serif;
+}
+.md-menu-content.md-select-menu {
+  z-index:9999;
 }
