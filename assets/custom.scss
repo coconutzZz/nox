@@ -47,11 +47,20 @@ h2 {
   font-weight: 700;
 }
 .fp-controlArrow {
+  border-color: black;
+  padding: 10px;
+  top: 42%;
   &.fp-prev {
-    border-color: transparent #21566b transparent transparent;
+    border-width: 0 3px 3px 0;
+    border-color: $primary;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
   }
   &.fp-next {
-    border-color: transparent transparent transparent #21566b;
+    border-width: 0 3px 3px 0;
+    border-color: $primary;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
   }
 }
 button {

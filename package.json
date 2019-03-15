@@ -16,7 +16,6 @@
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/style-resources": "^0.1.2",
     "cross-env": "^5.2.0",
-    "flexboxgrid-sass": "^8.0.5",
     "format-unicorn": "^1.1.1",
     "fullpage.js": "^3.0.4",
     "nuxt": "^2.4.0",

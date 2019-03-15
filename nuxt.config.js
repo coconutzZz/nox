@@ -37,7 +37,7 @@ module.exports = {
   modules: ['@nuxtjs/style-resources', '@nuxtjs/pwa'],
 
   styleResources: {
-    scss: ['./assets/_variables.scss', './flexboxgrid-sass']
+    scss: ['./assets/_variables.scss']
   },
 
   transpile: [/^vue2-google-maps($|\/)/],

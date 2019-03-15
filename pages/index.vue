@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div id="dev">
+      current: {{ $mq }}
+    </div>
     <Header :active-slide="active" />
     <MainMenu :active-slide="active" @show-cars="showCars = true" />
     <CarsModal v-if="showCars" @close="showCars = false" />
@@ -21,7 +24,6 @@ import About from '~/pages/About.vue'
 import CarsModal from '~/pages/Cars-Modal.vue'
 import Vue from 'vue'
 import VueMq from 'vue-mq'
-/*
 import {
   MdButton,
   MdCard,
@@ -39,10 +41,20 @@ Vue.use(MdIcon)
 Vue.use(MdDrawer)
 Vue.use(MdList)
 Vue.use(MdField)
-Vue.use(MdMenu) */
+Vue.use(MdMenu)
+/*
 import VueMaterial from 'vue-material'
-Vue.use(VueMaterial)
-Vue.use(VueMq)
+Vue.use(VueMaterial) */
+Vue.use(VueMq, {
+  breakpoints: {
+    xs: 599,
+    sm: 1023, // 600 - 1023
+    md: 1439, // 1024 - 1439
+    lg: 1919, // 1440 - 1919
+    xl: Infinity
+  },
+  defaultBreakpoint: 'sm' // customize this for SSR
+})
 export default {
   components: {
     Header,
@@ -90,5 +102,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+#dev {
+  position: fixed;
+  top: 0;
+  right: 150px;
+  font-size: 12px;
+  z-index: 999;
+  font-weight: bolder;
+  background-color: yellow;
+}
 </style>

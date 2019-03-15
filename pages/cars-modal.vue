@@ -4,14 +4,18 @@
       <div class="md-layout-item md-xlarge-size-20 md-large-size-30 md-small-size-100 filter">
         <md-field>
           <label for="brand">Znamka</label>
-          <md-select v-model="selectedModel" name="brand" id="brand">
-            <md-option v-for="model in models" :key="model.id" :value="model.id">{{ model.title }}</md-option>
+          <md-select id="brand" v-model="selectedModel" name="brand">
+            <md-option v-for="model in models" :key="model.id" :value="model.id">
+              {{ model.title }}
+            </md-option>
           </md-select>
         </md-field>
         <md-field>
           <label for="type">Karoserijska izvedba</label>
-          <md-select v-model="selectedType" name="type" id="type">
-            <md-option v-for="type in types" :key="type.id" :value="type.id">{{ type.name }}</md-option>
+          <md-select id="type" v-model="selectedType" name="type">
+            <md-option v-for="type in types" :key="type.id" :value="type.id">
+              {{ type.name }}
+            </md-option>
           </md-select>
         </md-field>
       </div>

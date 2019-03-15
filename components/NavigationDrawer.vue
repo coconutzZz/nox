@@ -46,7 +46,7 @@ export default {
 <style lang="scss">
 .drawer {
   .md-speed-dial {
-    z-index: 99;
+    z-index: 40;
   }
   .md-drawer {
     padding-top: 100px;
