@@ -9,6 +9,7 @@
     <div id="fullpage">
       <Home @show-cars="showCars = true" />
       <Services />
+      <CarSale />
       <About />
     </div>
   </div>
@@ -20,6 +21,7 @@ import MainMenu from '~/components/MainMenu.vue'
 import Header from '~/components/Header.vue'
 import Home from '~/pages/Home.vue'
 import Services from '~/pages/Services.vue'
+import CarSale from '~/pages/Car-Sale.vue'
 import About from '~/pages/About.vue'
 import CarsModal from '~/pages/Cars-Modal.vue'
 import Vue from 'vue'
@@ -61,6 +63,7 @@ export default {
     MainMenu,
     Home,
     Services,
+    CarSale,
     About,
     CarsModal
   },
@@ -88,7 +91,7 @@ export default {
       verticalCentered: false,
       loopHorizontal: false,
       menu: '#main-menu',
-      anchors: ['top', 'storitve', 'kontakt'],
+      anchors: ['top', 'storitve', 'prodaja-odkup', 'kontakt'],
       onLeave: (origin, destination, direction) => {
         this.onLeave(origin, destination, direction)
       }

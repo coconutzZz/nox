@@ -46,14 +46,14 @@ export default {
 <style lang="scss">
 .drawer {
   .md-speed-dial {
-    z-index: 40;
+    z-index: 10;
   }
   .md-drawer {
     padding-top: 100px;
     .md-list-item {
       display: block;
-      overflow: hidden;
       .md-list-item-text {
+        overflow: break-word;
         padding: 5px 20px 5px 15px;
         text-transform: uppercase;
         font-family: Heavitas, 'Arial Black', Helvetica, sans-serif;

@@ -1,5 +1,8 @@
 <template>
   <div class="modal-wrapper">
+    <md-button class="md-fab md-primary close" @click="hide()">
+      <md-icon>close</md-icon>
+    </md-button>
     <div class="md-layout">
       <div class="md-layout-item md-xlarge-size-20 md-large-size-30 md-small-size-100 filter">
         <md-field>
@@ -78,6 +81,11 @@ export default {
 
 <style lang="scss">
 .modal-wrapper {
+  .close {
+    position: absolute;
+    bottom: 18px;
+    right: 16px;
+  }
   .md-layout {
     width: 100%;
     .filter {
@@ -89,7 +97,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 9;
+  z-index: 20;
   background-color: #fff;
 }
 </style>
