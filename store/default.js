@@ -1,4 +1,5 @@
 export const state = () => ({
+  fullpage: null,
   phone: '+386 31 650 725',
   mail: 'nox@siol.net',
   services: [
@@ -33,14 +34,14 @@ export const state = () => ({
   ]
 })
 
-export const mutations = () => ({
-  setFullpageInstance (state, payload) {
-    state.fullpage = payload;
+export const mutations = {
+  setFullpageInstance(state, payload) {
+    state.fullpage = payload
   }
-})
+}
 
-export const actions = () => ({
-  setFullpageInstance (context) {
-    state.fullpage = context;
+export const actions = {
+  setFullpageInstance({ commit }, fullpage) {
+    commit('setFullpageInstance', fullpage)
   }
-})
+}

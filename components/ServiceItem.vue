@@ -5,8 +5,8 @@
     </div>
     <h1><slot name="header" /></h1>
     <slot name="subheader" />
-    <div class="md-caption">
-      <slot name="caption" />
+    <div>
+      <p class="text"><slot name="text" /></p>
     </div>
     <slot />
   </div>

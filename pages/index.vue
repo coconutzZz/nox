@@ -8,7 +8,7 @@
     <CarsModal v-if="showCars" @close="showCars = false" />
     <div id="fullpage">
       <Home @show-cars="showCars = true" />
-      <Services />
+      <ServicesBig />
       <CarSale />
       <About />
     </div>
@@ -20,7 +20,7 @@ import Fullpage from 'fullpage.js'
 import MainMenu from '~/components/MainMenu.vue'
 import Header from '~/components/Header.vue'
 import Home from '~/pages/Home.vue'
-import Services from '~/pages/Services.vue'
+import ServicesBig from '~/pages/Services-Big.vue'
 import CarSale from '~/pages/Car-Sale.vue'
 import About from '~/pages/About.vue'
 import CarsModal from '~/pages/Cars-Modal.vue'
@@ -62,7 +62,7 @@ export default {
     Header,
     MainMenu,
     Home,
-    Services,
+    ServicesBig,
     CarSale,
     About,
     CarsModal
@@ -86,7 +86,7 @@ export default {
     }
   },
   mounted() {
-    this.fullpage = new Fullpage('#fullpage', {
+    const fullpage = new Fullpage('#fullpage', {
       licenseKey: '26B1D363-7EA74CB6-9C33B3FF-EE11C3FD',
       verticalCentered: false,
       loopHorizontal: false,
@@ -96,6 +96,7 @@ export default {
         this.onLeave(origin, destination, direction)
       }
     })
+    this.fullpage = fullpage
   },
   methods: {
     onLeave(origin, destination, direction) {

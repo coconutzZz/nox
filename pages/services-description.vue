@@ -8,10 +8,10 @@
         Vse kar potrebujete - takoj.
       </div>
     </template>
-    <template v-slot:caption>
+    <template v-slot:text>
       Pri nas v pisarni lahko ob nakupu vozila takoj uredimo financiranje 
-      in zavarovanje. Vse na enem mestu. Potrudili se bomo, da vam 
-      omogočimo najbolj ugodno ponudbo kredita oz. leasinga.
+      in zavarovanje.<br>Vse na enem mestu. Potrudili se bomo, da vam 
+      omogočimo najbolj ugodno<br>ponudbo kredita oz. leasinga.
     </template>
     <template v-slot:default>
       <md-button class="forward md-raised md-primary">

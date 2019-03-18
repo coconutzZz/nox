@@ -4,14 +4,14 @@
       <ServicesDescription />
     </div>
     <div v-for="service in services" :key="service.id" class="services-desc slide">
-      <ServiceItem :classes="getServiceItemResponsiveClass()">
+      <ServiceItem classes="center-desc">
         <template v-slot:icon>
           <img :src="service.icon">
         </template>
         <template v-slot:header>
           {{ service.title }}
         </template>
-        <template v-slot:caption>
+        <template v-slot:text>
           {{ service.text }}
         </template>
       </ServiceItem>
@@ -32,20 +32,6 @@ export default {
     ...mapState('default', {
       services: state => state.services
     })
-  },
-  methods: {
-    getResponsiveClass() {
-      if (this.$mq === 'xs' || this.$mq === 'sm') {
-        return 'slide'
-      }
-      return ''
-    },
-    getServiceItemResponsiveClass() {
-      if (this.$mq === 'xs' || this.$mq === 'sm') {
-        return 'center-desc'
-      }
-      return ''
-    }
   }
 }
 </script>

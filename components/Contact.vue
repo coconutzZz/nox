@@ -25,8 +25,26 @@ export default {
 <style lang="scss">
 .md-card {
   &.contact {
-    left: 160px;
+    left: 0px;
     z-index: 1;
+    &.slide-0 {
+      left: 160px;
+    }
+  }
+  @media (min-width: 600px) and (max-width: 960px) {
+    &.contact {
+      left: 160px;
+    }
+  }
+  @media (min-width: 960px) and (max-width: 1280px) {
+    &.contact {
+      left: 160px;
+    }
+  }
+  @media (min-width: 1280px) {
+    &.contact {
+      left: 160px;
+    }
   }
 }
 </style>
