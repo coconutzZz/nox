@@ -8,7 +8,7 @@
     <CarsModal v-if="showCars" @close="showCars = false" />
     <div id="fullpage">
       <Home @show-cars="showCars = true" />
-      <ServicesBig />
+      <Services />
       <CarSale />
       <About />
     </div>
@@ -20,7 +20,7 @@ import Fullpage from 'fullpage.js'
 import MainMenu from '~/components/MainMenu.vue'
 import Header from '~/components/Header.vue'
 import Home from '~/pages/Home.vue'
-import ServicesBig from '~/pages/Services-Big.vue'
+import Services from '~/pages/Services.vue'
 import CarSale from '~/pages/Car-Sale.vue'
 import About from '~/pages/About.vue'
 import CarsModal from '~/pages/Cars-Modal.vue'
@@ -34,7 +34,8 @@ import {
   MdDrawer,
   MdList,
   MdField,
-  MdMenu
+  MdMenu,
+  MdProgress
 } from 'vue-material/dist/components'
 Vue.use(MdButton)
 Vue.use(MdCard)
@@ -44,6 +45,7 @@ Vue.use(MdDrawer)
 Vue.use(MdList)
 Vue.use(MdField)
 Vue.use(MdMenu)
+Vue.use(MdProgress)
 /*
 import VueMaterial from 'vue-material'
 Vue.use(VueMaterial) */
@@ -62,7 +64,7 @@ export default {
     Header,
     MainMenu,
     Home,
-    ServicesBig,
+    Services,
     CarSale,
     About,
     CarsModal
@@ -85,22 +87,37 @@ export default {
       return fullpage_api.getActiveSection().anchor
     }
   },
-  mounted() {
-    const fullpage = new Fullpage('#fullpage', {
-      licenseKey: '26B1D363-7EA74CB6-9C33B3FF-EE11C3FD',
-      verticalCentered: false,
-      loopHorizontal: false,
-      menu: '#main-menu',
-      anchors: ['top', 'storitve', 'prodaja-odkup', 'kontakt'],
-      onLeave: (origin, destination, direction) => {
-        this.onLeave(origin, destination, direction)
+  watch: {
+    $mq(newVal, oldVal) {
+      // eslint-disable-next-line
+      console.log(newVal, oldVal)
+      if (newVal === 'xs') {
+        // eslint-disable-next-line no-undef
+        fullpage_api.destroy('all')
+        this.initFullpage()
       }
-    })
-    this.fullpage = fullpage
+    }
+  },
+  mounted() {
+    this.initFullpage()
   },
   methods: {
     onLeave(origin, destination, direction) {
       this.active = destination.index
+    },
+    initFullpage() {
+      const fullpage = new Fullpage('#fullpage', {
+        licenseKey: '26B1D363-7EA74CB6-9C33B3FF-EE11C3FD',
+        verticalCentered: false,
+        loopHorizontal: false,
+        responsiveWidth: 600,
+        responsiveSlides: true,
+        menu: '#main-menu',
+        onLeave: (origin, destination, direction) => {
+          this.onLeave(origin, destination, direction)
+        }
+      })
+      this.fullpage = fullpage
     }
   }
 }

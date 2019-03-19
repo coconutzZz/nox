@@ -1,20 +1,22 @@
 <template>
-  <div id="services" class="section">
-    <div id="services-first" class="slide">
-      <ServicesDescription />
-    </div>
-    <div v-for="service in services" :key="service.id" class="services-desc slide">
-      <ServiceItem classes="center-desc">
-        <template v-slot:icon>
-          <img :src="service.icon">
-        </template>
-        <template v-slot:header>
-          {{ service.title }}
-        </template>
-        <template v-slot:text>
-          {{ service.text }}
-        </template>
-      </ServiceItem>
+  <div id="services" class="section fp-auto-height-responsive">
+    <div class="md-layout">
+      <div id="services-first" class="md-layout-item md-size-100">
+        <ServicesDescription />
+      </div>
+      <div v-for="service in services" :key="service.id" class="services-desc md-layout-item md-small-size-100 md-large-size-33">
+        <ServiceItem classes="center-desc">
+          <template v-slot:icon>
+            <img :src="service.icon">
+          </template>
+          <template v-slot:header>
+            {{ service.title }}
+          </template>
+          <template v-slot:text>
+            {{ service.text }}
+          </template>
+        </ServiceItem>
+      </div>
     </div>
   </div>
 </template>
@@ -53,6 +55,11 @@ export default {
     h1 {
       color: #b13030;
     }
+  }
+}
+@media (min-width: 600px) and (max-width: 960px) {
+  .fp-responsive #services {
+    height: auto !important;
   }
 }
 </style>

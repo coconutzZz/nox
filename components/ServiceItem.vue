@@ -6,7 +6,9 @@
     <h1><slot name="header" /></h1>
     <slot name="subheader" />
     <div>
-      <p class="text"><slot name="text" /></p>
+      <p class="text">
+        <slot name="text" />
+      </p>
     </div>
     <slot />
   </div>

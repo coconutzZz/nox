@@ -12,7 +12,7 @@
     </md-speed-dial>
     <md-drawer :md-active.sync="showNavigation" :md-right="true" md-persistent="full">
       <md-list>
-        <md-list-item v-for="item in items" :key="item.link" :href="item.link" @click="onClick(item.id)">
+        <md-list-item v-for="item in items" :key="item.link" :href="item.link" @click="onClick(item)">
           <span class="md-list-item-text">{{ item.text }}</span>
         </md-list-item>
       </md-list>
@@ -31,8 +31,8 @@ export default {
     }
   },
   methods: {
-    onClick(id) {
-      if (id === 1) {
+    onClick(item) {
+      if (item.showCars) {
         this.$emit('show-cars')
       }
     },

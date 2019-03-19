@@ -1,9 +1,11 @@
 <template>
-  <div id="home" class="section">
+  <div id="home" data-anchor="domov" class="section">
     <div class="center-desc">
-      <h1>Prodaja in odkup vozil Nox.<br/> Ponujamo le najboljše!</h1>
+      <h1>Prodaja in odkup vozil Nox.<br> Ponujamo le najboljše!</h1>
       <div>
-        <p class="text">Najdete nas v Murski Soboti<br>na Markišavski ulici</p>
+        <p class="text">
+          Najdete nas v Murski Soboti<br>na Markišavski ulici
+        </p>
       </div>
       <md-button class="forward md-raised md-primary" @click="$emit('show-cars')">
         PREVERITE PONUDBO

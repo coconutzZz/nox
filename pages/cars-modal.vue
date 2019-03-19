@@ -30,11 +30,9 @@
 </template>
 
 <script>
-import Cars from '~/pages/cars'
-
 export default {
   components: {
-    Cars
+    Cars: () => import('~/pages/cars')
   },
   data() {
     return {
