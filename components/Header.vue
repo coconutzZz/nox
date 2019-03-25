@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Logo :active-slide="activeSlide" />
-    <Contact :active-slide="activeSlide" />
+    <Logo />
+    <Contact />
   </div>
 </template>
 
@@ -12,9 +12,6 @@ export default {
   components: {
     Logo,
     Contact
-  },
-  props: {
-    activeSlide: null
   }
 }
 </script>

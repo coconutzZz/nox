@@ -3,8 +3,8 @@
     <div id="dev">
       current: {{ $mq }}
     </div>
-    <Header :active-slide="active" />
-    <MainMenu :active-slide="active" @show-cars="showCars = true" />
+    <Header />
+    <MainMenu @show-cars="showCars = true" />
     <CarsModal v-if="showCars" @close="showCars = false" />
     <div id="fullpage">
       <Home @show-cars="showCars = true" />
@@ -25,6 +25,7 @@ import CarSale from '~/pages/Car-Sale.vue'
 import About from '~/pages/About.vue'
 import CarsModal from '~/pages/Cars-Modal.vue'
 import Vue from 'vue'
+import { mapActions } from 'vuex'
 import VueMq from 'vue-mq'
 import {
   MdButton,
@@ -76,34 +77,13 @@ export default {
       showCars: false
     }
   },
-  computed: {
-    activeSlide() {
-      if (this.fullpage === null) {
-        return 0
-      }
-      // eslint-disable-next-line
-      console.log(fullpage_api.getActiveSection())
-      // eslint-disable-next-line no-undef
-      return fullpage_api.getActiveSection().anchor
-    }
-  },
-  watch: {
-    $mq(newVal, oldVal) {
-      // eslint-disable-next-line
-      console.log(newVal, oldVal)
-      if (newVal === 'xs') {
-        // eslint-disable-next-line no-undef
-        fullpage_api.destroy('all')
-        this.initFullpage()
-      }
-    }
-  },
   mounted() {
     this.initFullpage()
   },
   methods: {
+    ...mapActions('default', ['setActiveSlide']),
     onLeave(origin, destination, direction) {
-      this.active = destination.index
+      this.setActiveSlide(destination.index)
     },
     initFullpage() {
       const fullpage = new Fullpage('#fullpage', {

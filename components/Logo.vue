@@ -5,9 +5,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  props: {
-    activeSlide: null
+  computed: {
+    ...mapState('default', {
+      activeSlide: state => state.activeSlide
+    })
   }
 }
 </script>

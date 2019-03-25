@@ -16,7 +16,8 @@ export default {
   computed: {
     ...mapState('default', {
       phone: state => state.phone,
-      mail: state => state.mail
+      mail: state => state.mail,
+      activeSlide: state => state.activeSlide
     })
   }
 }

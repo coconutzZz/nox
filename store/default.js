@@ -1,5 +1,6 @@
 export const state = () => ({
   fullpage: null,
+  activeSlide: 0,
   phone: '+386 31 650 725',
   mail: 'nox@siol.net',
   services: [
@@ -35,13 +36,13 @@ export const state = () => ({
 })
 
 export const mutations = {
-  setFullpageInstance(state, payload) {
-    state.fullpage = payload
+  setActiveSlide(state, payload) {
+    state.activeSlide = payload
   }
 }
 
 export const actions = {
-  setFullpageInstance({ commit }, fullpage) {
-    commit('setFullpageInstance', fullpage)
+  setActiveSlide({ commit }, slide) {
+    commit('setActiveSlide', slide)
   }
 }
