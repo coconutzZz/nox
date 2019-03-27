@@ -1,60 +1,64 @@
 <template>
-  <ServiceItem :classes="slotClasses">
+  <ServiceItem id="main-desc" classes="center-desc">
     <template v-slot:header>
-      Storitve
+      <ActivateAnimationOnSlide :activate-on-slide="1">
+        <template v-slot:default="animate">
+          <AnimateTop :animate="animate.animate">            
+            <h1>Storitve</h1>
+          </AnimateTop>
+        </template>
+      </ActivateAnimationOnSlide>
     </template>
     <template v-slot:subheader>
-      <div class="md-subheading">
-        Vse kar potrebujete - takoj.
-      </div>
+      <ActivateAnimationOnSlide :activate-on-slide="1">
+        <template v-slot:default="animate">
+          <AnimateTop :animate="animate.animate">            
+            <h2>Vse kar potrebujete - takoj.</h2>
+          </AnimateTop>
+        </template>
+      </ActivateAnimationOnSlide>
     </template>
     <template v-slot:text>
-      Pri nas v pisarni lahko ob nakupu vozila takoj uredimo financiranje 
-      in zavarovanje.<br>Vse na enem mestu. Potrudili se bomo, da vam 
-      omogočimo najbolj ugodno<br>ponudbo kredita oz. leasinga.
-    </template>
-    <template v-slot:default>
-      <md-button class="forward md-raised md-primary">
-        Kontaktirajte nas
-      </md-button>
+      <ActivateAnimationOnSlide :activate-on-slide="1">
+        <template v-slot:default="animate">
+          <AnimateTop :animate="animate.animate">          
+            <p class="text">
+              Pri nas v pisarni lahko ob nakupu vozila takoj uredimo financiranje 
+              in zavarovanje.<br>Vse na enem mestu. Potrudili se bomo, da vam 
+              omogočimo najbolj ugodno<br>ponudbo kredita oz. leasinga.
+            </p>
+          </AnimateTop>
+        </template>
+      </ActivateAnimationOnSlide>
     </template>
   </ServiceItem>
 </template>
 
 <script>
+import ActivateAnimationOnSlide from '~/components/ActivateAnimationOnSlide.vue'
+import AnimateTop from '~/components/AnimateTop.vue'
 import ServiceItem from '~/components/ServiceItem.vue'
 export default {
   components: {
+    ActivateAnimationOnSlide,
+    AnimateTop,
     ServiceItem
-  },
-  data() {
-    return {
-      slotClasses: 'center-desc'
-    }
   }
 }
 </script>
 
 <style lang="scss">
-#services-first {
-  .md-subheading {
-    font-weight: 400;
+#main-desc {
+  h1 {
+    margin-bottom: 0px;
   }
-  .texture-bg {
+  &.center-desc {
+    top: 45%;
+    transform: translateY(-45%);
     position: relative;
+    z-index: 9;
+    text-align: center;
     margin: 0 auto;
-    width: 50%;
-    height: 50%;
-    background: url(../static/img/line-texture-bg-overlay.png);
-    background-position-x: 0;
-    background-position-y: 0;
-    background-size: auto 10px;
-    background-repeat: repeat;
-    opacity: 0.3;
-    filter: alpha(opacity=3); /* For IE8 and earlier */
-  }
-  button {
-    margin-top: 40px;
   }
 }
 </style>

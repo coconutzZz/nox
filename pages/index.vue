@@ -8,8 +8,11 @@
     <CarsModal v-if="showCars" @close="showCars = false" />
     <div id="fullpage">
       <Home @show-cars="showCars = true" />
-      <Services />
-      <CarSale />
+      <div id="services" class="section fp-auto-height-responsive">
+        <Services />
+        <CarSale />
+        <div class="arrow down bounce" />
+      </div>
       <About />
     </div>
   </div>
@@ -98,6 +101,7 @@ export default {
         }
       })
       this.fullpage = fullpage
+      this.setActiveSlide(0)
     }
   }
 }

@@ -1,16 +1,21 @@
 <template>
-  <div class="md-layout">
+  <div class="md-layout" :class="wrapperClass">
     <div class="md-layout-item md-size-100 first" />
     <div class="md-layout-item md-size-100 second">
-      <h1><slot name="header" /></h1>
+      <slot name="header" />
       <slot name="subheader" />      
-      <p class="text">
-        <slot name="default" />
-      </p>
+      <slot name="default" />
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    wrapperClass: {
+      type: String,
+      default: ''
+    }
+  }
+}
 </script>

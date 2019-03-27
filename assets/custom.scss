@@ -25,7 +25,7 @@ h1 {
   font-family: Heavitas, 'Arial Black', Helvetica, sans-serif;
   color: #424242;
   font-size: 45px;
-  line-height: 45px;
+  line-height: 60px;
   font-weight: normal;
   margin-bottom: 20px;
 }
@@ -79,8 +79,13 @@ p {
 
 
 h2 {
+  color: #b13030;
+  font-size: 30px;
+  line-height: 30px;
   text-transform: uppercase;
+  font-weight: normal;
   font-family: Heavitas, 'Arial Black', Helvetica, sans-serif;
+  margin-bottom: 20px;
 }
 .bold {
   font-weight: 700;
@@ -88,7 +93,7 @@ h2 {
 .fp-controlArrow {
   border-color: black;
   padding: 10px;
-  top: 42%;
+  top: 50%;
   &.fp-prev {
     border-width: 0 3px 3px 0;
     border-color: $primary;
@@ -102,6 +107,79 @@ h2 {
     -webkit-transform: rotate(-45deg);
   }
 }
+
+@-moz-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -moz-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -moz-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -moz-transform: rotate(45deg) translateY(0);
+    -ms-transform: rotate(45deg) translateY(0);
+    -webkit-transform: rotate(45deg) translateY(0);
+    transform: rotate(45deg) translateY(0);
+  }
+  40% {
+    -moz-transform: rotate(45deg) translateY(-30px) translateX(-30px);
+    -ms-transform: rotate(45deg) translateY(-30px) translateX(-30px);
+    -webkit-transform: rotate(45deg) translateY(-30px) translateX(-30px);
+    transform: rotate(45deg) translateY(-30px) translateX(-30px);
+  }
+  60% {
+    -moz-transform: rotate(45deg) translateY(-15px) translateX(-15px);
+    -ms-transform: rotate(45deg) translateY(-15px) translateX(-15px);
+    -webkit-transform: rotate(45deg) translateY(-15px) translateX(-15px);
+    transform: rotate(45deg) translateY(-15px) translateX(-15px);
+  }
+}
+
+.arrow {
+  position: absolute;
+  border-color: black;
+  padding: 10px;
+  bottom: 20px;
+  z-index: 4;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  margin-top: -38px;
+  left: 50%;
+  &.down {
+    border-width: 0 3px 3px 0;
+    border-color: $primary;
+  }
+  &.bounce {
+    -moz-animation: bounce 3s infinite;
+	  -webkit-animation: bounce 3s infinite;
+	  animation: bounce 3s infinite;
+  }
+}
+
+
 button {
   &.forward {
     .md-button-content {
@@ -119,4 +197,48 @@ button {
 }
 .md-menu-content.md-select-menu {
   z-index:9999;
+}
+.texture-bg {
+  position: absolute;
+  width: 50%;
+  height: 60%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  opacity: 0.85;
+  filter: alpha(opacity=85); /* For IE8 and earlier */
+  &:before,
+  &:after {
+    content: '';
+    background: url(../static/img/line-texture-horizontal.png);
+    background-position-x: 0;
+    background-position-y: 0;
+    background-size: auto 10px;
+    background-repeat: repeat;
+    width: 120%;
+    height: 200%;
+    transition-delay: 1s;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+  }
+  &:before {
+    background-position: 0 0;
+    transform: translate(calc(-50% + 1000px), calc(-50% - 1000px))
+      rotate(-45deg);
+  }
+  &:after {
+    background-position: 0 2px;
+    transform: translate(calc(-50% - 1000px), calc(-50% + 1000px))
+      rotate(-45deg);
+  }
+  &.animate {
+    &:before,
+    &:after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+      transition: transform 1s cubic-bezier(0.24, 0.72, 0.35, 1.01);
+      transition-delay: 0.75s;
+    }
+  }
 }

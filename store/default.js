@@ -1,6 +1,6 @@
 export const state = () => ({
   fullpage: null,
-  activeSlide: 0,
+  activeSlide: null,
   phone: '+386 31 650 725',
   mail: 'nox@siol.net',
   services: [

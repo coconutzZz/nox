@@ -26,13 +26,7 @@ export default {
           text: 'Ponudba vozil'
         },
         { id: 2, link: '#storitve', anchor: 'storitve', text: 'Storitve' },
-        {
-          id: 3,
-          link: '#prodaja-odkup',
-          anchor: 'prodaja-odkup',
-          text: 'Prodaja in odkup vozil'
-        },
-        { id: 4, link: '#kontakt', anchor: 'kontakt', text: 'Kontakt' }
+        { id: 3, link: '#kontakt', anchor: 'kontakt', text: 'Kontakt' }
       ]
     }
   },

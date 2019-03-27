@@ -1,5 +1,5 @@
 <template>
-  <div id="about" data-anchor="kontakt" class="section">
+  <div id="about" class="section">
     <div class="md-layout md-alignment-center-center">
       <div class="md-layout-item md-medium-size-50 md-small-size-100">
         <div class="md-layout-item md-small-size-100 box-wrapper">
