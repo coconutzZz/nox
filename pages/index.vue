@@ -13,20 +13,13 @@
         <CarSale />
         <div class="arrow down bounce" />
       </div>
+      <Contact />
       <About />
     </div>
   </div>
 </template>
 
 <script>
-import Fullpage from 'fullpage.js'
-import MainMenu from '~/components/MainMenu.vue'
-import Header from '~/components/Header.vue'
-import Home from '~/pages/Home.vue'
-import Services from '~/pages/Services.vue'
-import CarSale from '~/pages/Car-Sale.vue'
-import About from '~/pages/About.vue'
-import CarsModal from '~/pages/Cars-Modal.vue'
 import Vue from 'vue'
 import { mapActions } from 'vuex'
 import VueMq from 'vue-mq'
@@ -39,8 +32,20 @@ import {
   MdList,
   MdField,
   MdMenu,
-  MdProgress
+  MdProgress,
+  MdSnackbar
 } from 'vue-material/dist/components'
+import Fullpage from 'fullpage.js'
+import MainMenu from '~/components/MainMenu.vue'
+import Header from '~/components/Header.vue'
+
+import Home from '~/pages/Home.vue'
+import Services from '~/pages/Services.vue'
+import CarSale from '~/pages/Car-Sale.vue'
+import About from '~/pages/About.vue'
+import Contact from '~/pages/Contact.vue'
+import CarsModal from '~/pages/Cars-Modal.vue'
+
 Vue.use(MdButton)
 Vue.use(MdCard)
 Vue.use(MdSpeedDial)
@@ -50,6 +55,7 @@ Vue.use(MdList)
 Vue.use(MdField)
 Vue.use(MdMenu)
 Vue.use(MdProgress)
+Vue.use(MdSnackbar)
 /*
 import VueMaterial from 'vue-material'
 Vue.use(VueMaterial) */
@@ -71,7 +77,8 @@ export default {
     Services,
     CarSale,
     About,
-    CarsModal
+    CarsModal,
+    Contact
   },
   data() {
     return {

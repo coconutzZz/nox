@@ -10,9 +10,6 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  props: {
-    activeSlide: null
-  },
   computed: {
     ...mapState('default', {
       phone: state => state.phone,
