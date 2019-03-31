@@ -1,11 +1,12 @@
 <template>
-  <nav :class="['slide-' + this.activeSlide]" role="navigation">
-    <NavigationDrawer :items="items" @show-cars="showCars()" />
-    <Menu v-if="false" :items="items" class="d-none d-lg-block" @show-cars="showCars()" />
+  <nav role="navigation">
+    <NavigationDrawer v-if="$mq === 'xs' || $mq === 'sm'" :items="items" :item-click="itemClick" />
+    <Menu v-else :items="items" :item-click="itemClick" />
   </nav>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import NavigationDrawer from './NavigationDrawer.vue'
 import Menu from './Menu.vue'
 
@@ -15,25 +16,39 @@ export default {
     Menu
   },
   props: {
-    activeSlide: null
+    fullpage: {
+      default: null,
+      type: Object
+    }
   },
   data() {
     return {
       items: [
-        {
-          id: 1,
-          link: '#',
-          text: 'Ponudba vozil'
-        },
-        { id: 2, link: '#storitve', anchor: 'storitve', text: 'Storitve' },
-        { id: 3, link: '#kontakt', anchor: 'kontakt', text: 'Kontakt' }
+        { anchor: 'ponudba', text: 'Ponudba vozil' },
+        { anchor: 'storitve', text: 'Storitve' },
+        { anchor: 'kontakt', text: 'Kontakt' },
+        { anchor: 'kje-smo', text: 'Kje smo' }
       ]
     }
   },
   methods: {
-    showCars() {
-      this.$emit('show-cars')
+    ...mapActions('default', ['toggleCars']),
+    itemClick(anchor) {
+      if (this.showCars) {
+        return
+      }
+
+      if (anchor === 'ponudba') {
+        this.toggleCars()
+      } else {
+        this.fullpage.moveTo(anchor)
+      }
     }
+  },
+  computed: {
+    ...mapState('default', {
+      showCars: state => state.showCars
+    })
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="md-layout" :class="wrapperClass">
     <div class="md-layout-item md-size-100 first" />
-    <div class="md-layout-item md-size-100 second">
+    <div class="md-layout-item md-size-100 md-alignment-center-center second">
       <slot name="header" />
       <slot name="subheader" />      
       <slot name="default" />

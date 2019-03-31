@@ -1,7 +1,7 @@
 <template>  
   <ul id="main-menu">
-    <li v-for="item in items" :key="item.link">
-      <a :href="item.link" :data-menuanchor="item.anchor" @click="onClick(item.id)">{{ item.text }}</a>
+    <li v-for="item in items" :key="item.anchor">
+      <a :href="item.link" @click="onClick(item)">{{ item.text }}</a>
     </li>
   </ul>
 </template>
@@ -9,13 +9,12 @@
 <script>
 export default {
   props: {
-    items: Array
+    items: Array,
+    itemClick: Function
   },
   methods: {
-    onClick(id) {
-      if (id === 1) {
-        this.$emit('show-cars')
-      }
+    onClick(item) {
+      this.itemClick(item.anchor)
     }
   }
 }
@@ -36,6 +35,7 @@ export default {
     padding: 0 10px;
     display: inline-block;
     a {
+      cursor: pointer;
       text-decoration: none;
       text-transform: uppercase;
       position: relative;

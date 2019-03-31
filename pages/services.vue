@@ -1,11 +1,11 @@
 <template>
   <div class="slide fp-auto-height-responsive">
     <div class="md-layout md-alignment-top-center">
-      <div id="services-first" class="md-layout-item md-size-100">
+      <div class="services-first md-layout-item md-size-100">
         <ServicesDescription />
       </div>
       <div class="services-desc-wrapper md-layout-item md-size-80">
-        <div class="md-layout">
+        <div v-if="$mq !== 'xs'" class="md-layout">
           <div v-for="service in services" :key="service.id" class="services-desc md-alignment-top-center md-layout-item md-small-size-100 md-large-size-33">
             <ServiceItem>
               <template v-slot:icon>
@@ -61,7 +61,7 @@ export default {
       background-size: cover;
     }
   }
-  #services-first {
+  .services-first {
     height: 50vh;
   }
   .services-desc-wrapper {
@@ -84,6 +84,11 @@ export default {
     }
   }
 }
+@media (max-width: 600px) {
+  #services .services-first {
+    height: 100vh !important;
+  }
+}
 @media (min-width: 600px) and (max-width: 960px) {
   .fp-responsive #services {
     .slide {
@@ -95,6 +100,10 @@ export default {
 }
 @media (min-width: 600px) and (max-width: 1280px) {
   #services {
+    .services-first {
+      height: 100vh !important;
+    }
+
     .services-desc-wrapper {
       max-width: 1800px;
       margin: 30px 30px 50px 30px;

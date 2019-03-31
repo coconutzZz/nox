@@ -29,9 +29,9 @@ export default {
   display: block;
   &.animate {
     transform: translateY(0);
-    transition: transform 0.8s cubic-bezier(0.24, 0.72, 0.35, 1.01);
+    transition: transform 1.8s cubic-bezier(0.24, 0.72, 0.35, 1.01);
     transition-property: transform;
-    transition-duration: 0.8s;
+    transition-duration: 1.8s;
     transition-timing-function: cubic-bezier(0.24, 0.72, 0.35, 1.01);
   }
 }

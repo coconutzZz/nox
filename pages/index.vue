@@ -3,13 +3,16 @@
     <div id="dev">
       current: {{ $mq }}
     </div>
-    <Header :logoClick="this.intro()" />
-    <MainMenu @show-cars="showCars = true" />
-    <CarsModal v-if="showCars" @close="showCars = false" />
+    <Header :logo-click="this.intro" />
+    <MainMenu :fullpage="this.fullpage" />
+    <CarsModal v-if="showCars" />
     <div id="fullpage">
-      <Home @show-cars="showCars = true" />
-      <div id="services" class="section fp-auto-height-responsive">
+      <Home />
+      <div id="services" data-anchor="storitve" class="section fp-auto-height-responsive">
         <Services />
+        <div v-if="isMobile" class="slide">
+          test
+        </div>
         <CarSale />
         <div class="arrow down bounce" />
       </div>
@@ -21,9 +24,10 @@
 
 <script>
 import Vue from 'vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import VueMq from 'vue-mq'
 import {
+  MdRipple,
   MdButton,
   MdCard,
   MdSpeedDial,
@@ -38,7 +42,6 @@ import {
 import Fullpage from 'fullpage.js'
 import MainMenu from '~/components/MainMenu.vue'
 import Header from '~/components/Header.vue'
-
 import Home from '~/pages/Home.vue'
 import Services from '~/pages/Services.vue'
 import CarSale from '~/pages/Car-Sale.vue'
@@ -46,6 +49,7 @@ import About from '~/pages/About.vue'
 import Contact from '~/pages/Contact.vue'
 import CarsModal from '~/pages/Cars-Modal.vue'
 
+Vue.use(MdRipple)
 Vue.use(MdButton)
 Vue.use(MdCard)
 Vue.use(MdSpeedDial)
@@ -83,12 +87,28 @@ export default {
   data() {
     return {
       fullpage: null,
-      active: 0,
-      showCars: false
+      isMobile: false
+    }
+  },
+  watch: {
+    $mq(newVal, oldVal) {
+      // eslint-disable-next-line
+      console.log(newVal, oldVal)
+      if (newVal === 'xs') {
+        this.isMobile = true
+        this.fullpage.destroy('all')
+        this.initFullpage()
+      }
     }
   },
   mounted() {
     this.initFullpage()
+  },
+  computed: {
+    ...mapState('default', {
+      showCars: state => state.showCars,
+      services: state => state.services
+    })
   },
   methods: {
     ...mapActions('default', ['setActiveSlide']),
@@ -100,15 +120,21 @@ export default {
         licenseKey: '26B1D363-7EA74CB6-9C33B3FF-EE11C3FD',
         verticalCentered: false,
         loopHorizontal: false,
-        responsiveWidth: 600,
         responsiveSlides: true,
         menu: '#main-menu',
         onLeave: (origin, destination, direction) => {
+          if (this.showCars) {
+            return false
+          }
+
           this.onLeave(origin, destination, direction)
         }
       })
       this.fullpage = fullpage
       this.setActiveSlide(0)
+    },
+    intro() {
+      this.fullpage.moveTo('intro')
     }
   }
 }

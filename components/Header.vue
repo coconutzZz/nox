@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Logo />
+    <Logo :logo-click="this.logoClick" />
     <Contact />
   </div>
 </template>
@@ -12,6 +12,9 @@ export default {
   components: {
     Logo,
     Contact
+  },
+  props: {
+    logoClick: Function
   }
 }
 </script>

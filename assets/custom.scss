@@ -8,12 +8,7 @@ body {
 html {
   box-sizing: border-box;
   font-size: 16px;
-  // Magic:
-  @media (max-width: 1000px) {
-    font-size: calc(12px + .4vw);
-  }
 }
-
 *,
 *:before,
 *:after {
@@ -24,68 +19,36 @@ html {
 h1 {
   font-family: Heavitas, 'Arial Black', Helvetica, sans-serif;
   color: #424242;
-  font-size: 45px;
-  line-height: 60px;
+  font-size: 30px;
+  line-height: 30px;
   font-weight: normal;
   margin-bottom: 20px;
 }
-.md-subheading {
-  font-weight: bold;
-  font-size: 20px;
-  font-family: 'Open Sans', sans-serif;
-  margin-bottom: 20px;
+h2 {
+  color: #b13030;
+  font-size: 15px;
+  line-height: 10px;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-family: Heavitas, 'Arial Black', Helvetica, sans-serif;
+  margin-bottom: 10px;
 }
 .md-button {
   &.big {
-    height: 40px;
+    height: 30px;
     .md-ripple {
-      padding: 0 15px;
+      padding: 0 5px;
     }
   }
 }
 p {
   &.text {
-    font-size: 20px;
-    line-height: 25px;
+    font-size: 15px;
+    line-height: 15px;
     color: #424242;
     margin-bottom: 10px;
+    padding: 0 30px;
   }
-}
-@media (min-width: 600px) and (max-width: 960px) {
-  h1 {
-    font-size: 45px;
-    line-height: 55px;
-  }
-}
-@media (min-width: 960px) and (max-width: 1280px){
-  h1 {
-    font-size: 55px;
-    line-height: 65px;
-  }
-  p {
-    &.text {
-      font-size: 20px;
-      line-height: 25px;
-    }
-  }
-}
-@media (min-width: 1280px) {
-  h1 {
-    font-size: 60px;
-    line-height: 75px;
-  }
-}
-
-
-
-h2 {
-  color: #b13030;
-  font-size: 30px;
-  line-height: 30px;
-  text-transform: uppercase;
-  font-weight: normal;
-  font-family: Heavitas, 'Arial Black', Helvetica, sans-serif;
-  margin-bottom: 20px;
 }
 .bold {
   font-weight: 700;
@@ -144,16 +107,16 @@ h2 {
     transform: rotate(45deg) translateY(0);
   }
   40% {
-    -moz-transform: rotate(45deg) translateY(-30px) translateX(-30px);
-    -ms-transform: rotate(45deg) translateY(-30px) translateX(-30px);
-    -webkit-transform: rotate(45deg) translateY(-30px) translateX(-30px);
-    transform: rotate(45deg) translateY(-30px) translateX(-30px);
+    -moz-transform: rotate(45deg) translateY(-20px) translateX(-20px);
+    -ms-transform: rotate(45deg) translateY(-20px) translateX(-20px);
+    -webkit-transform: rotate(45deg) translateY(-20px) translateX(-20px);
+    transform: rotate(45deg) translateY(-20px) translateX(-20px);
   }
   60% {
-    -moz-transform: rotate(45deg) translateY(-15px) translateX(-15px);
-    -ms-transform: rotate(45deg) translateY(-15px) translateX(-15px);
-    -webkit-transform: rotate(45deg) translateY(-15px) translateX(-15px);
-    transform: rotate(45deg) translateY(-15px) translateX(-15px);
+    -moz-transform: rotate(45deg) translateY(-10px) translateX(-10px);
+    -ms-transform: rotate(45deg) translateY(-10px) translateX(-10px);
+    -webkit-transform: rotate(45deg) translateY(-10px) translateX(-10px);
+    transform: rotate(45deg) translateY(-10px) translateX(-10px);
   }
 }
 
@@ -184,7 +147,6 @@ button {
   &.forward {
     .md-button-content {
       font-family: 'Open Sans', sans-serif;
-      font-size: 1.2rem;
       &:after {
         content: ' \2192';
         font-family: Arial, Helvetica, sans-serif;
@@ -192,53 +154,33 @@ button {
     }
   }
 }
-.md-subheading {
-  font-family: 'Open Sans', sans-serif;
-}
+
 .md-menu-content.md-select-menu {
   z-index:9999;
 }
-.texture-bg {
-  position: absolute;
-  width: 50%;
-  height: 60%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  overflow: hidden;
-  opacity: 0.85;
-  filter: alpha(opacity=85); /* For IE8 and earlier */
-  &:before,
-  &:after {
-    content: '';
-    background: url(../static/img/line-texture-horizontal.png);
-    background-position-x: 0;
-    background-position-y: 0;
-    background-size: auto 10px;
-    background-repeat: repeat;
-    width: 120%;
-    height: 200%;
-    transition-delay: 1s;
-    left: 50%;
-    top: 50%;
-    position: absolute;
+
+
+@media (min-width: 600px) and (max-width: 960px) {
+  h1 {
+    font-size: 35px;
+    line-height: 45px;
   }
-  &:before {
-    background-position: 0 0;
-    transform: translate(calc(-50% + 1000px), calc(-50% - 1000px))
-      rotate(-45deg);
+}
+@media (min-width: 960px) and (max-width: 1280px){
+  h1 {
+    font-size: 55px;
+    line-height: 65px;
   }
-  &:after {
-    background-position: 0 2px;
-    transform: translate(calc(-50% - 1000px), calc(-50% + 1000px))
-      rotate(-45deg);
-  }
-  &.animate {
-    &:before,
-    &:after {
-      transform: translate(-50%, -50%) rotate(-45deg);
-      transition: transform 1s cubic-bezier(0.24, 0.72, 0.35, 1.01);
-      transition-delay: 0.75s;
+  p {
+    &.text {
+      font-size: 20px;
+      line-height: 25px;
     }
+  }
+}
+@media (min-width: 1280px) {
+  h1 {
+    font-size: 60px;
+    line-height: 75px;
   }
 }

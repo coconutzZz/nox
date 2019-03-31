@@ -24,8 +24,8 @@
           <AnimateTop :animate="animate.animate">          
             <p class="text">
               Pri nas v pisarni lahko ob nakupu vozila takoj uredimo financiranje 
-              in zavarovanje.<br>Vse na enem mestu. Potrudili se bomo, da vam 
-              omogočimo najbolj ugodno<br>ponudbo kredita oz. leasinga.
+              in zavarovanje. Vse na enem mestu. Potrudili se bomo, da vam 
+              omogočimo najbolj ugodno ponudbo kredita oz. leasinga.
             </p>
           </AnimateTop>
         </template>

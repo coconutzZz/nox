@@ -29,7 +29,7 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['~/plugins/google-maps-vue'],
+  plugins: [],
 
   /*
   ** Nuxt.js modules
@@ -39,8 +39,6 @@ module.exports = {
   styleResources: {
     scss: ['./assets/_variables.scss']
   },
-
-  transpile: [/^vue2-google-maps($|\/)/],
 
   /*
   ** Build configuration

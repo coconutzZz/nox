@@ -1,10 +1,10 @@
 <template>
   <div class="modal-wrapper">
-    <md-button class="md-fab md-primary close" @click="hide()">
+    <md-button class="md-fab md-primary close" @click="toggleCars()">
       <md-icon>close</md-icon>
     </md-button>
-    <div class="md-layout">
-      <div class="md-layout-item md-xlarge-size-20 md-large-size-30 md-small-size-100 filter">
+    <div class="md-layout md-alignment-top-center md-gutter">
+      <div class="md-layout-item md-xlarge-size-20 md-large-size-30 md-small-size-50 filter">
         <md-field>
           <label for="brand">Znamka</label>
           <md-select id="brand" v-model="selectedModel" name="brand">
@@ -13,6 +13,8 @@
             </md-option>
           </md-select>
         </md-field>
+      </div>
+      <div class="md-layout-item md-xlarge-size-20 md-large-size-30 md-small-size-50 filter">
         <md-field>
           <label for="type">Karoserijska izvedba</label>
           <md-select id="type" v-model="selectedType" name="type">
@@ -22,7 +24,7 @@
           </md-select>
         </md-field>
       </div>
-      <div class="md-layout-item md-small-size-100">
+      <div class="md-layout-item md-large-size-80 md-small-size-100">
         <Cars :selected-model="selectedModel" :selected-type="selectedType" />
       </div>
     </div>
@@ -30,6 +32,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   components: {
     Cars: () => import('~/pages/cars')
@@ -70,15 +73,14 @@ export default {
     }
   },
   methods: {
-    hide() {
-      this.$emit('close')
-    }
+    ...mapActions('default', ['toggleCars'])
   }
 }
 </script>
 
 <style lang="scss">
 .modal-wrapper {
+  padding: 0 20px;
   .close {
     position: absolute;
     bottom: 18px;
@@ -87,7 +89,7 @@ export default {
   .md-layout {
     width: 100%;
     .filter {
-      padding: 50px 20px;
+      padding: 0px 20px;
     }
   }
   position: fixed;

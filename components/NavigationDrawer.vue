@@ -12,7 +12,7 @@
     </md-speed-dial>
     <md-drawer :md-active.sync="showNavigation" :md-right="true" md-persistent="full">
       <md-list>
-        <md-list-item v-for="item in items" :key="item.link" :href="item.link" @click="onClick(item)">
+        <md-list-item v-for="item in items" :key="item.anchor" @click="onClick(item)">
           <span class="md-list-item-text">{{ item.text }}</span>
         </md-list-item>
       </md-list>
@@ -23,7 +23,8 @@
 <script>
 export default {
   props: {
-    items: Array
+    items: Array,
+    itemClick: Function
   },
   data() {
     return {
@@ -32,9 +33,7 @@ export default {
   },
   methods: {
     onClick(item) {
-      if (item.showCars) {
-        this.$emit('show-cars')
-      }
+      this.itemClick(item.anchor)
     },
     toggleMenu() {
       this.showNavigation = !this.showNavigation
