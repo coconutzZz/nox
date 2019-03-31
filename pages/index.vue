@@ -3,7 +3,7 @@
     <div id="dev">
       current: {{ $mq }}
     </div>
-    <Header />
+    <Header :logoClick="this.intro()" />
     <MainMenu @show-cars="showCars = true" />
     <CarsModal v-if="showCars" @close="showCars = false" />
     <div id="fullpage">
