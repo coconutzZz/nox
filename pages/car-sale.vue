@@ -4,17 +4,19 @@
       <div class="md-layout-item md-size-100 first" />
       <div class="md-layout-item md-size-100 second">
         <div class="md-layout md-alignment-center-center">
-          <div class="md-layout-item md-size-80 md-xsmall-size-100">
+          <div class="md-layout-item md-xlarge-size-50 md-large-size-70 md-medium-size-90 md-small-size-80 md-xsmall-size-100">
             <h1>Prodaja in odkup vozil</h1>
             <p class="text">
               Od leta 2010 se ukvarjamo s prodajo in odkupom novih in rabljenih vozil. Vsa vozila, ki jih prodajamo so tehnično brezhibna, 
               pregledana in očiščena. Če prodajate vozilo, ga ocenimo in odkupimo s takojšnjim plačilom ali ga vzamemo v račun pri nakupu
               drugega vozila iz naše ponudbe. Podatke o vozilu, ki ga želite prodati, nam sporočite kar preko kontaktnega obrazca.
               Lahko uredimo tudi uvoz avtomobil iz tujine po vaših željah. Za dodatne informacije nas pokličite...
-              <md-button v-if="$mq !== 'xs'" class="forward md-raised md-primary">
-                KONTAKTIRAJTE NAS
-              </md-button>
             </p>
+          </div>
+          <div v-if="$mq !== 'xs'" class="md-layout-item md-size-100">
+            <md-button class="forward md-raised md-primary" @click="contactClick">
+              ŽELITE VEČ INFORMACIJ?
+            </md-button>
           </div>
         </div>
       </div>
@@ -23,7 +25,19 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    fullpage: {
+      default: null,
+      type: Object
+    }
+  },
+  methods: {
+    contactClick() {
+      this.fullpage.moveTo('kontakt')
+    }
+  }
+}
 </script>
 
 <style lang="scss">
@@ -41,13 +55,27 @@ export default {}
     }
   }
   @media (min-width: 600px) and (max-width: 1280px) {
-    .first {
-      height: 40vh;
+    #car-sale {
+      .first {
+        height: 20vh;
+      }
+      .second {
+        padding: 10px;
+      }
+      p {
+        &.text {
+          margin-bottom: 0px;
+          padding: 0;
+        }
+      }
     }
   }
   @media (min-width: 1280px) {
     .first {
-      height: 50vh;
+      height: 40vh;
+    }
+    .second {
+      padding: 15px;
     }
   }
 }

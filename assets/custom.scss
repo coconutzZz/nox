@@ -19,15 +19,12 @@ html {
 h1 {
   font-family: Heavitas, 'Arial Black', Helvetica, sans-serif;
   color: #424242;
-  font-size: 30px;
-  line-height: 30px;
   font-weight: normal;
   margin-bottom: 20px;
 }
 h2 {
   color: #b13030;
   font-size: 15px;
-  line-height: 10px;
   text-transform: uppercase;
   font-weight: normal;
   font-family: Heavitas, 'Arial Black', Helvetica, sans-serif;
@@ -41,15 +38,7 @@ h2 {
     }
   }
 }
-p {
-  &.text {
-    font-size: 15px;
-    line-height: 15px;
-    color: #424242;
-    margin-bottom: 10px;
-    padding: 0 30px;
-  }
-}
+
 .bold {
   font-weight: 700;
 }
@@ -130,7 +119,7 @@ p {
   height: 0;
   border-style: solid;
   margin-top: -38px;
-  left: 50%;
+  left: calc(50% - 10px);
   &.down {
     border-width: 0 3px 3px 0;
     border-color: $primary;
@@ -141,8 +130,6 @@ p {
 	  animation: bounce 3s infinite;
   }
 }
-
-
 button {
   &.forward {
     .md-button-content {
@@ -154,22 +141,21 @@ button {
     }
   }
 }
-
 .md-menu-content.md-select-menu {
   z-index:9999;
 }
 
 
-@media (min-width: 600px) and (max-width: 960px) {
-  h1 {
-    font-size: 35px;
-    line-height: 45px;
-  }
-}
-@media (min-width: 960px) and (max-width: 1280px){
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  
   h1 {
     font-size: 55px;
-    line-height: 65px;
+    line-height: 55px;
   }
   p {
     &.text {
@@ -177,10 +163,106 @@ button {
       line-height: 25px;
     }
   }
+  
 }
-@media (min-width: 1280px) {
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
   h1 {
-    font-size: 60px;
-    line-height: 75px;
+    font-size: 46px;
+    line-height: 46px;
   }
+  p {
+    &.text {
+      font-size: 18px;
+      line-height: 18px;
+    }
+  }
+  
 }
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  h1 {
+    font-size: 45px;
+    line-height: 45px;
+  }
+  p {
+    &.text {
+      font-size: 18px;
+      line-height: 17px;
+    }
+  }
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  h1 {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  p {
+    &.text {
+      font-size: 15px;
+      line-height: 14px;
+    }
+  }
+  
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  h1 {
+    font-size: 40px;
+    line-height: 40px;
+  }
+  p {
+    &.text {
+      font-size: 15px;
+      line-height: 14px;
+    }
+  }
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {
+  
+  h1 {
+    font-size: 35px;
+    line-height: 35px;
+  }
+  p {
+    &.text {
+      font-size: 15px;
+      line-height: 15px;
+    }
+  }
+  
+}
+

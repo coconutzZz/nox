@@ -6,7 +6,7 @@
           <template v-slot:default="animate">
             <AnimateTop :animate="animate.animate">
               <h1>
-                Prodaja in odkup vozil.<br> Ponujamo le najboljše!
+                Prodaja in odkup vozil - NOX.<br> Ponujamo le najboljše!
               </h1>
             </AnimateTop>
           </template>
@@ -17,22 +17,19 @@
               <p class="text">
                 Obiščite nas in se prepričajte!<br>
                 Najdete nas v Murski Soboti na Markišavski ulici
-              </p>            
+              </p>      
+              <p class="text">      
+                <md-icon>access_time</md-icon>
+                PON-PET: 9 - 17 ure, SOB: 8 - 12 ure
+              </p>
             </AnimateTop>
           </template>
         </ActivateAnimationOnSlide>
-        <md-button class="forward md-raised md-primary big" @click="toggleCars()">
+        <md-button class="forward md-raised md-primary" @click="toggleCars()">
           PREVERITE PONUDBO
         </md-button>
       </div>
     </div>
-    
-    
-    <ActivateAnimationOnSlide :activate-on-slide="0">
-      <template v-slot:default="animate">
-        <div class="texture-bg" :class="animate.animate" />
-      </template>
-    </ActivateAnimationOnSlide>
     <div class="arrow down bounce" />
   </div>
 </template>
@@ -54,31 +51,37 @@ export default {
 
 <style lang="scss">
 #home {
-  background-image: url(../static/img/main-bg.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+    url(../static/img/main-bg.jpg);
   background-position-y: bottom;
   background-size: cover;
+  .md-icon {
+    color: #fff;
+  }
   .md-layout {
     height: 100vh;
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
   h1 {
-    color: $secondary;
+    color: #fff;
   }
   button {
     margin-top: 20px;
   }
-
+  p.text {
+    color: #fff;
+  }
   .texture-bg {
     position: absolute;
     width: 50%;
-    height: 60%;
+    height: 50%;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     overflow: hidden;
-    opacity: 0.85;
     z-index: 0;
-    filter: alpha(opacity=85); /* For IE8 and earlier */
     &:before,
     &:after {
       content: '';

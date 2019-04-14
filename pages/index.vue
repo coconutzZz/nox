@@ -1,18 +1,12 @@
 <template>
   <div>
-    <div id="dev">
-      current: {{ $mq }}
-    </div>
     <Header :logo-click="this.intro" />
     <MainMenu :fullpage="this.fullpage" />
     <CarsModal v-if="showCars" />
     <div id="fullpage">
       <Home />
       <div id="services" data-anchor="storitve" class="section fp-auto-height-responsive">
-        <Services />
-        <div v-if="isMobile" class="slide">
-          test
-        </div>
+        <Services :fullpage="this.fullpage" />
         <CarSale />
         <div class="arrow down bounce" />
       </div>
@@ -37,7 +31,8 @@ import {
   MdField,
   MdMenu,
   MdProgress,
-  MdSnackbar
+  MdSnackbar,
+  MdDialog
 } from 'vue-material/dist/components'
 import Fullpage from 'fullpage.js'
 import MainMenu from '~/components/MainMenu.vue'
@@ -60,6 +55,7 @@ Vue.use(MdField)
 Vue.use(MdMenu)
 Vue.use(MdProgress)
 Vue.use(MdSnackbar)
+Vue.use(MdDialog)
 /*
 import VueMaterial from 'vue-material'
 Vue.use(VueMaterial) */
@@ -86,19 +82,7 @@ export default {
   },
   data() {
     return {
-      fullpage: null,
-      isMobile: false
-    }
-  },
-  watch: {
-    $mq(newVal, oldVal) {
-      // eslint-disable-next-line
-      console.log(newVal, oldVal)
-      if (newVal === 'xs') {
-        this.isMobile = true
-        this.fullpage.destroy('all')
-        this.initFullpage()
-      }
+      fullpage: null
     }
   },
   mounted() {

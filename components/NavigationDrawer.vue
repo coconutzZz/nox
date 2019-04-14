@@ -11,8 +11,9 @@
       </md-speed-dial-target>
     </md-speed-dial>
     <md-drawer :md-active.sync="showNavigation" :md-right="true" md-persistent="full">
+      <img class="logo" src="../static/img/nox-logo.png" title="Nox d.o.o. - Prodaja Vozil" alt="Nox d.o.o. - Prodaja Vozil" @click="onClick('intro')">
       <md-list>
-        <md-list-item v-for="item in items" :key="item.anchor" @click="onClick(item)">
+        <md-list-item v-for="item in items" :key="item.anchor" @click="onClick(item.anchor)">
           <span class="md-list-item-text">{{ item.text }}</span>
         </md-list-item>
       </md-list>
@@ -32,8 +33,8 @@ export default {
     }
   },
   methods: {
-    onClick(item) {
-      this.itemClick(item.anchor)
+    onClick(anchor) {
+      this.itemClick(anchor)
     },
     toggleMenu() {
       this.showNavigation = !this.showNavigation
@@ -44,10 +45,16 @@ export default {
 
 <style lang="scss">
 .drawer {
+  .logo {
+    margin: 0 auto;
+    padding: 20px 0;
+    cursor: pointer;
+  }
   .md-speed-dial {
     z-index: 10;
   }
   .md-drawer {
+    text-align: center;
     padding-top: 100px;
     .md-list-item {
       display: block;

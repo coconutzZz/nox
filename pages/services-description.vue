@@ -1,5 +1,5 @@
 <template>
-  <ServiceItem id="main-desc" classes="center-desc">
+  <ServiceItem id="main-desc">    
     <template v-slot:header>
       <ActivateAnimationOnSlide :activate-on-slide="1">
         <template v-slot:default="animate">
@@ -29,7 +29,7 @@
             </p>
           </AnimateTop>
         </template>
-      </ActivateAnimationOnSlide>
+      </ActivateAnimationOnSlide>      
     </template>
   </ServiceItem>
 </template>
@@ -51,14 +51,6 @@ export default {
 #main-desc {
   h1 {
     margin-bottom: 0px;
-  }
-  &.center-desc {
-    top: 45%;
-    transform: translateY(-45%);
-    position: relative;
-    z-index: 9;
-    text-align: center;
-    margin: 0 auto;
   }
 }
 </style>

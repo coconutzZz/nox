@@ -4,28 +4,32 @@
       <md-icon>close</md-icon>
     </md-button>
     <div class="md-layout md-alignment-top-center md-gutter">
-      <div class="md-layout-item md-xlarge-size-20 md-large-size-30 md-small-size-50 filter">
-        <md-field>
-          <label for="brand">Znamka</label>
-          <md-select id="brand" v-model="selectedModel" name="brand">
-            <md-option v-for="model in models" :key="model.id" :value="model.id">
-              {{ model.title }}
-            </md-option>
-          </md-select>
-        </md-field>
+      <div v-if="$mq !== 'xs' && $mq !== 'sm' " class="md-layout-item md-large-size-40 md-medium-size-100 md-small-size-100 filter">
+        <div class="md-layout md-gutter md-alignment-center-center">
+          <div class="md-layout-item md-size-50">
+            <md-field>
+              <label for="brand">Znamka</label>
+              <md-select id="brand" v-model="selectedModel" name="brand">
+                <md-option v-for="model in models" :key="model.id" :value="model.id">
+                  {{ model.title }}
+                </md-option>
+              </md-select>
+            </md-field>
+          </div>
+          <div class="md-layout-item md-size-50">
+            <md-field>
+              <label for="type">Karoserija</label>
+              <md-select id="type" v-model="selectedType" name="type">
+                <md-option v-for="t in types" :key="t.id" :value="t.id">
+                  {{ t.name }}
+                </md-option>
+              </md-select>
+            </md-field>
+          </div>
+        </div>
       </div>
-      <div class="md-layout-item md-xlarge-size-20 md-large-size-30 md-small-size-50 filter">
-        <md-field>
-          <label for="type">Karoserijska izvedba</label>
-          <md-select id="type" v-model="selectedType" name="type">
-            <md-option v-for="type in types" :key="type.id" :value="type.id">
-              {{ type.name }}
-            </md-option>
-          </md-select>
-        </md-field>
-      </div>
-      <div class="md-layout-item md-large-size-80 md-small-size-100">
-        <Cars :selected-model="selectedModel" :selected-type="selectedType" />
+      <div class="md-layout-item md-large-size-60 md-medium-size-80 md-small-size-100">
+        <Cars :selected-model="selectedModel" :selected-type="selectedType" />        
       </div>
     </div>
   </div>
@@ -80,24 +84,35 @@ export default {
 
 <style lang="scss">
 .modal-wrapper {
-  padding: 0 20px;
   .close {
     position: absolute;
-    bottom: 18px;
-    right: 16px;
-  }
-  .md-layout {
-    width: 100%;
-    .filter {
-      padding: 0px 20px;
-    }
+    bottom: 50px;
+    right: 0px;
   }
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
   z-index: 20;
   background-color: #fff;
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .modal-wrapper {
+    .close {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .modal-wrapper {
+    .close {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+    }
+  }
 }
 </style>
