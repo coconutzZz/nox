@@ -25,7 +25,7 @@
             </AnimateTop>
           </template>
         </ActivateAnimationOnSlide>
-        <md-button class="forward md-raised md-primary" @click="toggleCars()">
+        <md-button class="forward md-raised md-primary" @click="openCarsStock()">
           PREVERITE PONUDBO
         </md-button>
       </div>
@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import ActivateAnimationOnSlide from '~/components/ActivateAnimationOnSlide.vue'
 import AnimateTop from '~/components/AnimateTop.vue'
 export default {
@@ -44,7 +43,14 @@ export default {
     AnimateTop
   },
   methods: {
-    ...mapActions('default', ['toggleCars'])
+    openCarsStock() {
+      if (this.$device.isIos) {
+        window.location.href =
+          'http://www.avto.net/_DEALERPAGES/results.asp?broker=12125&izpis=1'
+        return
+      }
+      this.$router.push({ path: 'ponudba-vozil' })
+    }
   }
 }
 </script>

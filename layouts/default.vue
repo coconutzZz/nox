@@ -13,7 +13,7 @@
   'default',
   (
     primary: $primary,
-    accent: #1a11e8
+    accent: $secondary
   )
 );
 @import '~vue-material/dist/theme/all';

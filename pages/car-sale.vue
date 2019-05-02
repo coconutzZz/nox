@@ -13,11 +13,6 @@
               Lahko uredimo tudi uvoz avtomobil iz tujine po vaših željah. Za dodatne informacije nas pokličite...
             </p>
           </div>
-          <div v-if="$mq !== 'xs'" class="md-layout-item md-size-100">
-            <md-button class="forward md-raised md-primary" @click="contactClick">
-              ŽELITE VEČ INFORMACIJ?
-            </md-button>
-          </div>
         </div>
       </div>
     </div>
@@ -30,11 +25,6 @@ export default {
     fullpage: {
       default: null,
       type: Object
-    }
-  },
-  methods: {
-    contactClick() {
-      this.fullpage.moveTo('kontakt')
     }
   }
 }

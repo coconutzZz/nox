@@ -34,7 +34,7 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: ['@nuxtjs/style-resources', '@nuxtjs/pwa'],
+  modules: ['@nuxtjs/style-resources', '@nuxtjs/pwa', 'nuxt-device-detect'],
 
   styleResources: {
     scss: ['./assets/_variables.scss']

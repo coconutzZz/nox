@@ -1,7 +1,6 @@
 export const state = () => ({
   fullpage: null,
   activeSlide: null,
-  showCars: false,
   phone: '+386 31 650 725',
   mail: 'nox@siol.net',
   services: [
@@ -39,17 +38,11 @@ export const state = () => ({
 export const mutations = {
   setActiveSlide(state, payload) {
     state.activeSlide = payload
-  },
-  toggleCars(state) {
-    state.showCars = !state.showCars
   }
 }
 
 export const actions = {
   setActiveSlide({ commit }, slide) {
     commit('setActiveSlide', slide)
-  },
-  toggleCars({ commit }) {
-    commit('toggleCars')
   }
 }

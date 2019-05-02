@@ -9,6 +9,9 @@ html {
   box-sizing: border-box;
   font-size: 16px;
 }
+html,body {
+  overflow: hidden;
+}
 *,
 *:before,
 *:after {
@@ -142,7 +145,7 @@ button {
   }
 }
 .md-menu-content.md-select-menu {
-  z-index:9999;
+  z-index:99;
 }
 
 

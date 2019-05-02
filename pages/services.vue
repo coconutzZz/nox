@@ -83,7 +83,7 @@ export default {
       this.descDialogContent = text
     },
     contactClick() {
-      this.fullpage.moveTo('kontakt')
+      this.$router.push('kontakt')
     }
   }
 }
@@ -108,6 +108,9 @@ export default {
     .md-layout {
       height: 50vh;
     }
+    h2 {
+      margin-bottom: 0;
+    }
     height: 50vh;
     text-align: center;
     .icon-wrapper {
@@ -130,9 +133,9 @@ export default {
 @media (max-width: 1280px) {
   #services {
     .first {
-      height: 40vh;
+      height: 35vh;
       .md-layout {
-        height: 40vh;
+        height: 35vh;
       }
     }
     .second {
@@ -140,7 +143,7 @@ export default {
       .icon-wrapper {
         margin-bottom: 0px;
         img {
-          max-height: 40px;
+          max-height: 35px;
         }
       }
       .services-desc {

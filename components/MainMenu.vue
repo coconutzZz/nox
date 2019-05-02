@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
 import NavigationDrawer from './NavigationDrawer.vue'
 import Menu from './Menu.vue'
 
@@ -24,31 +23,30 @@ export default {
   data() {
     return {
       items: [
-        { anchor: 'ponudba', text: 'Ponudba vozil' },
+        { anchor: 'ponudba-vozil', text: 'Ponudba vozil', router: true },
         { anchor: 'storitve', text: 'Storitve' },
-        { anchor: 'kontakt', text: 'Kontakt' },
+        { anchor: 'kontakt', text: 'Kontakt', router: true },
         { anchor: 'kje-smo', text: 'Kje smo' }
       ]
     }
   },
   methods: {
-    ...mapActions('default', ['toggleCars']),
-    itemClick(anchor) {
-      if (this.showCars) {
+    itemClick(item) {
+      if (
+        item.router &&
+        item.anchor === 'ponudba-vozil' &&
+        this.$device.isIos
+      ) {
+        window.location.href =
+          'http://www.avto.net/_DEALERPAGES/results.asp?broker=12125&izpis=1'
         return
       }
-
-      if (anchor === 'ponudba') {
-        this.toggleCars()
+      if (item.router) {
+        this.$router.push({ path: item.anchor })
       } else {
-        this.fullpage.moveTo(anchor)
+        this.fullpage.moveTo(item.anchor)
       }
     }
-  },
-  computed: {
-    ...mapState('default', {
-      showCars: state => state.showCars
-    })
   }
 }
 </script>

@@ -18,7 +18,7 @@
           </div>
         </div>
       </div>
-      <div class="md-layout-item md-medium-size-50 md-small-hide filter">
+      <div class="md-layout-item md-medium-size-50 md-small-hide">
         <div class="map">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2737.882881490937!2d16.1719643158264!3d46.6685733602936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476f3eeb421cae89%3A0xca0ba612203d6d71!2sMarki%C5%A1avska+ulica+15%2C+9000+Murska+Sobota!5e0!3m2!1ssl!2ssi!4v1458568789861"            

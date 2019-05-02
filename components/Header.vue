@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Logo :logo-click="this.logoClick" :class="animateClass" />
+    <Logo :logo-click="this.logoClick" :class="animateClass" :active="activeSlide" />
     <Contact v-if="$mq !== 'xs'" />
   </div>
 </template>

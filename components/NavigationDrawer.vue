@@ -13,7 +13,7 @@
     <md-drawer :md-active.sync="showNavigation" :md-right="true" md-persistent="full">
       <img class="logo" src="../static/img/nox-logo.png" title="Nox d.o.o. - Prodaja Vozil" alt="Nox d.o.o. - Prodaja Vozil" @click="onClick('intro')">
       <md-list>
-        <md-list-item v-for="item in items" :key="item.anchor" @click="onClick(item.anchor)">
+        <md-list-item v-for="item in items" :key="item.anchor" @click="onClick(item)">
           <span class="md-list-item-text">{{ item.text }}</span>
         </md-list-item>
       </md-list>
@@ -33,8 +33,8 @@ export default {
     }
   },
   methods: {
-    onClick(anchor) {
-      this.itemClick(anchor)
+    onClick(item) {
+      this.itemClick(item)
     },
     toggleMenu() {
       this.showNavigation = !this.showNavigation

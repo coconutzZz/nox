@@ -2,7 +2,6 @@
   <div>
     <Header :logo-click="this.intro" />
     <MainMenu :fullpage="this.fullpage" />
-    <CarsModal v-if="showCars" />
     <div id="fullpage">
       <Home />
       <div id="services" data-anchor="storitve" class="section fp-auto-height-responsive">
@@ -10,7 +9,6 @@
         <CarSale />
         <div class="arrow down bounce" />
       </div>
-      <Contact />
       <About />
     </div>
   </div>
@@ -30,9 +28,9 @@ import {
   MdList,
   MdField,
   MdMenu,
-  MdProgress,
   MdSnackbar,
-  MdDialog
+  MdDialog,
+  MdToolbar
 } from 'vue-material/dist/components'
 import Fullpage from 'fullpage.js'
 import MainMenu from '~/components/MainMenu.vue'
@@ -41,8 +39,6 @@ import Home from '~/pages/Home.vue'
 import Services from '~/pages/Services.vue'
 import CarSale from '~/pages/Car-Sale.vue'
 import About from '~/pages/About.vue'
-import Contact from '~/pages/Contact.vue'
-import CarsModal from '~/pages/Cars-Modal.vue'
 
 Vue.use(MdRipple)
 Vue.use(MdButton)
@@ -53,12 +49,9 @@ Vue.use(MdDrawer)
 Vue.use(MdList)
 Vue.use(MdField)
 Vue.use(MdMenu)
-Vue.use(MdProgress)
 Vue.use(MdSnackbar)
 Vue.use(MdDialog)
-/*
-import VueMaterial from 'vue-material'
-Vue.use(VueMaterial) */
+Vue.use(MdToolbar)
 Vue.use(VueMq, {
   breakpoints: {
     xs: 599,
@@ -76,9 +69,7 @@ export default {
     Home,
     Services,
     CarSale,
-    About,
-    CarsModal,
-    Contact
+    About
   },
   data() {
     return {
@@ -88,9 +79,13 @@ export default {
   mounted() {
     this.initFullpage()
   },
+  destroyed() {
+    this.fullpage.destroy('all')
+    this.fullpage = null
+    this.setActiveSlide(-1)
+  },
   computed: {
     ...mapState('default', {
-      showCars: state => state.showCars,
       services: state => state.services
     })
   },
@@ -104,15 +99,11 @@ export default {
         licenseKey: '26B1D363-7EA74CB6-9C33B3FF-EE11C3FD',
         verticalCentered: false,
         loopHorizontal: false,
-        responsiveSlides: true,
         menu: '#main-menu',
         onLeave: (origin, destination, direction) => {
-          if (this.showCars) {
-            return false
-          }
-
           this.onLeave(origin, destination, direction)
-        }
+        },
+        fitToSection: false
       })
       this.fullpage = fullpage
       this.setActiveSlide(0)
@@ -133,5 +124,8 @@ export default {
   z-index: 999;
   font-weight: bolder;
   background-color: yellow;
+}
+#fullpage {
+  overflow: hidden;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>  
   <ul v-if="!showCars" id="main-menu" :class="'active-slide-' + activeSlide">
-    <li v-for="item in items" :key="item.anchor">
+    <li v-for="item in items" :key="item.anchor">      
       <a :href="item.link" @click="onClick(item)">{{ item.text }}</a>
     </li>
   </ul>
@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     onClick(item) {
-      this.itemClick(item.anchor)
+      this.itemClick(item)
     }
   }
 }

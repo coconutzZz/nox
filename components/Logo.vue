@@ -1,5 +1,5 @@
 <template>
-  <md-card md-with-hover class="md-primary logo" :class="'active-slide-' + activeSlide">
+  <md-card md-with-hover class="md-primary logo" :class="'active-slide-' + active">
     <md-ripple>
       <img class="img-fluid" src="../static/img/nox-logo.png" title="Nox d.o.o. - Prodaja Vozil" alt="Nox d.o.o. - Prodaja Vozil" @click="onClick">
     </md-ripple>
@@ -7,15 +7,10 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
-  computed: {
-    ...mapState('default', {
-      activeSlide: state => state.activeSlide
-    })
-  },
   props: {
-    logoClick: Function
+    logoClick: Function,
+    active: Number
   },
   methods: {
     onClick() {
