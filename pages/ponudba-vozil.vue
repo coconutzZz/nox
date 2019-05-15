@@ -12,13 +12,13 @@
           <md-icon>email</md-icon>
         </md-button>
         <div v-if="$mq !== 'xs' && $mq !== 'sm'">
-          nox@siol.net
+          {{ mail }}
         </div>
         <md-button class="md-icon-button" @click="phoneTo()">
           <md-icon>phone</md-icon>
         </md-button>
         <div v-if="$mq !== 'xs' && $mq !== 'sm'">
-          +386 31 650 725
+          {{ phone }}
         </div>
       </div>
 
@@ -29,7 +29,7 @@
       </div>
     </md-toolbar>
 
-    <md-drawer :md-active.sync="showNavigation" class="filter md-primary md-elevation-10 md-scrollbar" md-persistent="full">
+    <md-drawer :md-active.sync="showNavigation" class="filter md-primary md-elevation-10 md-scrollbar" md-persistent="full" :style="{ height: this.drawerHeight }">      
       <md-toolbar class="md-transparent" md-elevation="0">
         <div class="md-toolbar-section-end">
           <md-button class="md-icon-button md-primary" @click="toggleMenu">
@@ -60,12 +60,14 @@
         </md-list-item>
       </md-list>
     </md-drawer>    
-    <Cars :selected-model="selectedModel" :selected-type="selectedType" />
+    <Cars :selected-model="selectedModel" :selected-type="selectedType" :height="height" :width="width" />
   </div>
 </template>
 
 <script>
+import texts from '~/assets/texts.js'
 import Vue from 'vue'
+import { mapState } from 'vuex'
 import {
   MdRipple,
   MdButton,
@@ -107,8 +109,12 @@ export default {
   },
   data() {
     return {
+      phone: texts.phone,
+      mail: texts.mail,
       showNavigation: false,
       height: 0,
+      width: 0,
+      windowHeight: 0,
       selectedModel: '',
       selectedType: '',
       models: [
@@ -142,18 +148,48 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapState('default', {
+      activeAnchor: state => state.activeAnchor
+    }),
+    drawerHeight() {
+      return this.windowHeight + 'px'
+    }
+  },
+  created() {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize)
+  },
   methods: {
     toggleMenu() {
       this.showNavigation = !this.showNavigation
     },
     closeThis() {
-      this.$router.push({ path: '/' })
+      this.$router.push({ path: '/#' + this.activeAnchor })
     },
     mailTo() {
-      window.location.replace('mailto:nox@siol.net')
+      window.location.replace('mailto:' + this.mail)
     },
     phoneTo() {
-      window.location.href = 'tel:0038631650725'
+      window.location.href = 'tel:' + this.phone
+    },
+    handleResize() {
+      const height = window.innerHeight
+      const width = window.innerWidth
+      this.windowHeight = height
+      if (width >= 600 && width < 768) {
+        this.height = height + height * 0.25 - 48
+        this.width = width + width * 0.25
+      } else if (width < 600) {
+        this.height = (height - 48) * 2
+        this.width = width * 2
+      } else {
+        this.height = height - 48
+        this.width = width
+      }
     }
   }
 }

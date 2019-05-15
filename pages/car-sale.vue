@@ -1,8 +1,7 @@
 <template>
   <div id="car-sale" class="slide">
     <div class="md-layout">
-      <div class="md-layout-item md-size-100 first" />
-      <div class="md-layout-item md-size-100 second">
+      <div class="md-layout-item md-size-100">
         <div class="md-layout md-alignment-center-center">
           <div class="md-layout-item md-xlarge-size-50 md-large-size-70 md-medium-size-90 md-small-size-80 md-xsmall-size-100">
             <h1>Prodaja in odkup vozil</h1>
@@ -32,41 +31,8 @@ export default {
 
 <style lang="scss">
 #car-sale {
-  .first {
-    background-image: url(../static/img/bg-bmws.jpg);
-    background-position-y: bottom;
-    background-size: cover;
-    height: 30vh;
-  }
-  .second {
-    padding: 20px;
-    h1 {
-      text-align: center;
-    }
-  }
-  @media (min-width: 600px) and (max-width: 1280px) {
-    #car-sale {
-      .first {
-        height: 20vh;
-      }
-      .second {
-        padding: 10px;
-      }
-      p {
-        &.text {
-          margin-bottom: 0px;
-          padding: 0;
-        }
-      }
-    }
-  }
-  @media (min-width: 1280px) {
-    .first {
-      height: 40vh;
-    }
-    .second {
-      padding: 15px;
-    }
-  }
+  background-image: url(../static/img/bg-bmws.png);
+  background-position-y: top;
+  background-size: cover;
 }
 </style>

@@ -28,16 +28,20 @@ export default {
     },
     selectedType: {
       default: ''
+    },
+    width: {
+      default: 0,
+      type: Number
+    },
+    height: {
+      default: 0,
+      type: Number
     }
   },
   data() {
     return {
       urlBase:
         'http://www.avto.net/_DEALERPAGES/results.asp?broker=12125&izpis={view}&znamka={model}&oblika={type}',
-      size: {
-        height: 0,
-        width: 0
-      },
       iframeLoading: true,
       documentLoading: true
     }
@@ -51,41 +55,15 @@ export default {
       })
     },
     iframeStyle() {
-      if (this.size.width >= 600 && this.size.width < 768) {
-        return {
-          height: this.size.height + this.size.height * 0.25 - 48 + 'px',
-          width: this.size.width + this.size.width * 0.25 + 'px',
-          margin: 0 + ' auto',
-          display: this.iframeLoading ? 'none' : 'block'
-        }
-      }
-      if (this.size.width < 600) {
-        return {
-          height: (this.size.height - 48) * 2 + 'px',
-          width: this.size.width * 2 + 'px',
-          margin: 0 + ' auto',
-          display: this.iframeLoading ? 'none' : 'block'
-        }
-      }
       return {
-        height: this.size.height - 48 + 'px',
+        height: this.height + 'px',
+        width: this.width + 'px',
         margin: 0 + ' auto',
         display: this.iframeLoading ? 'none' : 'block'
       }
     }
   },
-  created() {
-    window.addEventListener('resize', this.handleResize)
-    this.handleResize()
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.handleResize)
-  },
   methods: {
-    handleResize() {
-      this.size.height = window.innerHeight
-      this.size.width = window.innerWidth
-    },
     onLoad() {
       this.iframeLoading = false
     },

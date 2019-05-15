@@ -9,11 +9,16 @@
 
 <script>
 import { mapState } from 'vuex'
+import texts from '~/assets/texts.js'
 export default {
+  data: () => {
+    return {
+      phone: texts.phone,
+      mail: texts.mail
+    }
+  },
   computed: {
     ...mapState('default', {
-      phone: state => state.phone,
-      mail: state => state.mail,
       activeSlide: state => state.activeSlide
     })
   }

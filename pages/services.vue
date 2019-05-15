@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import texts from '~/assets/texts.js'
 import ServicesDescription from './services-description.vue'
 import ServiceItem from '~/components/ServiceItem.vue'
 import ActivateAnimationOnSlide from '~/components/ActivateAnimationOnSlide.vue'
@@ -66,13 +66,9 @@ export default {
   data: () => {
     return {
       showDescDialog: false,
-      descDialogContent: ''
+      descDialogContent: '',
+      services: texts.services
     }
-  },
-  computed: {
-    ...mapState('default', {
-      services: state => state.services
-    })
   },
   methods: {
     showDialog(text) {
@@ -91,8 +87,8 @@ export default {
 
 <style lang="scss">
 #services {
-  background-image: url(../static/img/bg-audis.png);
-  background-position-y: bottom;
+  background-image: url(../static/img/bg-bmws-bw.png);
+  background-position-y: top;
   background-size: cover;
   .first {
     height: 50vh;

@@ -1,11 +1,11 @@
 <template>
   <div class="drawer">
-    <md-speed-dial class="md-bottom-right" md-event="click" md-direction="top">
+    <md-speed-dial class="md-bottom-right" :class="this.showNavigation ? 'active' : ''" md-event="click" md-direction="top">
       <md-speed-dial-target class="md-primary" @click="toggleMenu()">
-        <md-icon class="md-morph-initial">
+        <md-icon v-if="!this.showNavigation">
           menu
         </md-icon>
-        <md-icon class="md-morph-final">
+        <md-icon v-else>
           close
         </md-icon>
       </md-speed-dial-target>
@@ -34,6 +34,7 @@ export default {
   },
   methods: {
     onClick(item) {
+      this.showNavigation = false
       this.itemClick(item)
     },
     toggleMenu() {
@@ -52,6 +53,11 @@ export default {
   }
   .md-speed-dial {
     z-index: 10;
+    &.active {
+      button {
+        background-color: $secondary !important;
+      }
+    }
   }
   .md-drawer {
     text-align: center;

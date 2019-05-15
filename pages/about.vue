@@ -13,8 +13,22 @@
         <div class="md-layout-item md-small-size-100 box-wrapper" :style="{ height: height/2 + 'px' }">
           <div class="box">
             <h1>Kontakt:</h1>
-            <div><span class="bold">E:</span> nox@siol.net</div>
-            <div><span class="bold">T:</span> +386 31 650 725</div>
+            <div>
+              <md-button class="md-icon-button md-accent" @click="mailTo()">
+                <md-icon>email</md-icon>
+              </md-button> 
+              <span class="contact-txt">
+                {{ mail }}
+              </span>
+            </div>
+            <div>
+              <md-button class="md-icon-button md-accent" @click="phoneTo()">
+                <md-icon>phone</md-icon>
+              </md-button>
+              <span class="contact-txt">
+                {{ phone }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
@@ -31,9 +45,14 @@
 </template>
 
 <script>
+import texts from '~/assets/texts.js'
 export default {
   data: () => {
-    return { height: 0 }
+    return {
+      height: 0,
+      phone: texts.phone,
+      mail: texts.mail
+    }
   },
   created() {
     window.addEventListener('resize', this.handleResize)
@@ -45,6 +64,12 @@ export default {
   methods: {
     handleResize() {
       this.height = window.innerHeight
+    },
+    mailTo() {
+      window.location.replace('mailto:' + this.mail)
+    },
+    phoneTo() {
+      window.location.href = 'tel:' + this.phone
     }
   }
 }
@@ -58,6 +83,9 @@ export default {
     h1 {
       color: #fff;
       margin-bottom: 20px;
+    }
+    .contact-txt {
+      line-height: 37px;
     }
     &:first-child {
       background-color: #fff;

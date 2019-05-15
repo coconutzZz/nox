@@ -82,7 +82,7 @@ export default {
   destroyed() {
     this.fullpage.destroy('all')
     this.fullpage = null
-    this.setActiveSlide(-1)
+    this.setActiveSlide({ index: -1 })
   },
   computed: {
     ...mapState('default', {
@@ -92,7 +92,9 @@ export default {
   methods: {
     ...mapActions('default', ['setActiveSlide']),
     onLeave(origin, destination, direction) {
-      this.setActiveSlide(destination.index)
+      // eslint-disable-next-line no-console
+      console.log(destination)
+      this.setActiveSlide(destination)
     },
     initFullpage() {
       const fullpage = new Fullpage('#fullpage', {
